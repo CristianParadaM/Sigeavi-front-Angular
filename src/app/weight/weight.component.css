@@ -1,0 +1,257 @@
+.container-fluid {
+    width: 100%;
+    height: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+    background-color: rgb(125, 95, 69);
+}
+
+.subtitle {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.search {
+    position: relative;
+    height: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 40px;
+    background-color: #385723;
+    border-radius: 15px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.searchInput {
+    background-color: transparent;
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    border: none;
+}
+
+::placeholder {
+    color: rgb(241, 241, 241);
+}
+
+.icon {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+.principal-table {
+    margin-top: 20px;
+    background-color: #E6F2DE;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    color: black;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    height: 70vh;
+}
+
+th {
+    background-color: #548235;
+    color: white;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+li {
+    list-style: none;
+    background-color: #70AD47;
+}
+
+.footer {
+    color: white;
+    font-size: 28px;
+    text-align: center;
+    margin-top: 30px;
+    -webkit-text-stroke-color: #ED7D31;
+    -webkit-text-stroke-width: 1px;
+}
+
+td {
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.content {
+    height: 100%;
+}
+
+.mortality-img {
+    width: 280px;
+}
+
+.weight-quanty {
+    font-size: 50px;
+    font-weight: bold;
+    color: black;
+    display: block;
+    margin-bottom: -20px;
+    margin-top: 100px;
+}
+
+.slider {
+    height: 80%;
+}
+
+.info {
+    text-align: left;
+    font-size: 25px;
+    padding-top: 40px;
+}
+
+.input-weight {
+    border-radius: 10px;
+    background-color: #649B3F;
+    color: white;
+    width: 100px;
+}
+
+.button-save {
+    border-radius: 10px;
+    background-color: #649B3F;
+    color: white;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-bottom: 20px;
+}
+
+.status {
+    font-weight: bold;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #649B3F;
+}
+
+.bascula {
+    background-image: url('./../../assets/balanza.png');
+    background-size: 300px;
+    width: 300px;
+    height: 300px;
+}
+
+.aguja {
+    margin-top: 120px;
+    width: 15px;
+}
+
+.content2 {
+    display: grid;
+    place-content: center;
+}
+
+.ant-slider-handle {
+    background-color: #385723 !important;
+}
+
+.history-table {
+    width: 100%;
+    height: 100%;
+}
+
+.history {
+    background-color: #49752c;
+}
+
+.table-title {
+    font-size: 20px;
+    height: 30px;
+}
+
+tr[par=true] {
+    background-color: #d7f3c4;
+}
+
+tr[par=false] {
+    background-color: #bde7a1;
+}
+
+.table-lots {
+    width: 100%;
+    color: black;
+    margin-top: 20px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.lot-cell {
+    border-left-width: 0px;
+    border-right-width: 0px;
+}
+
+.row-lots {
+    list-style: none;
+    background-color: #d7f3c4;
+}
+
+.row-lots[par="false"] {
+    list-style: none;
+    background-color: #bde7a1;
+}
+
+.row-lots[selected=true] {
+    background-color: #74c041;
+}
+
+.row-lots:hover {
+    background-color: #8aa875;
+    cursor: pointer;
+}
+
+@media (max-width:768px) {
+    .container-fluid {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+    }
+
+    .bascula {
+        background-size: 200px;
+        width: 200px;
+        height: 200px;
+    }
+
+    .aguja {
+        margin-top: 84px;
+        width: 9px;
+    }
+
+    .weight-quanty, .footer {
+        font-size: 20px;
+    }
+
+    td {
+        font-size: 15px;
+    }
+
+    th,
+    .info {
+        font-size: 18px;
+    }
+
+    .input-water,
+    .button-save {
+        font-size: 15px;
+        height: 30px;
+    }
+
+    .subtitle {
+        text-align: center;
+    }
+
+}

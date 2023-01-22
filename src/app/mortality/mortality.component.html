@@ -1,0 +1,134 @@
+<div class="background2">
+    <div class="container-fluid">
+        <div class="subtitle">{{subtitle}}</div>
+        <table class="principal-table">
+            <thead>
+                <th class="col-2">{{lot}}</th>
+                <th class="d-none d-xl-table-cell col-xl-10">{{registerMortality}}</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-12 col-xl-2">
+                        <div class="content">
+                            <div class="search">
+                                <input type="text" class="searchInput" name="search" placeholder="Buscar Lote"
+                                    (input)="filter(search.value)" #search>
+                                <img src="assets/lupawhiteicon.svg" alt="icon" width="20px" class="icon">
+                            </div>
+                            <div class="row">
+                                <table class="table-lots">
+                                    <thead>
+                                        <th class="header-lots col-6">Lotes</th>
+                                        <th class="header-lots col-6">Galpón</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="row-lots" *ngFor="let lot of lots;index as i" [attr.par]="i%2==0"
+                                            (click)="select(lot.id, i)" [attr.selected]="selectedLots[i]==1">
+                                            <td class="lot-cell">{{lot.lot}}</td>
+                                            <td class="lot-cell">{{lot.sheed}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="d-none d-xl-table-cell col-xl-10">
+                        <div class="content row">
+                            <div class="col-4">
+                                <div style="display: flex; justify-content: center; align-items: center; margin-top: 80px;">
+                                    <img src="assets/mortality.png" class="mortality-img" alt="water">
+                                </div>
+                                <p class="mortality-quanty">{{killsNumber}} Muertes</p>
+                            </div>
+                            <div class="col-1" style="display: flex; justify-content: center; align-items: center;">
+                                <div class="slider">
+                                    <nz-slider nzVertical [nzMin]="1" [nzMax]="50" [(ngModel)]="killsNumber">
+                                    </nz-slider>
+                                </div>
+                            </div>
+                            <div class="col-3 info">
+                                <p><span class="bold">{{date}}</span>{{dateValue}}</p>
+                                <input type="number" class="input-water" [defaultValue]="0" min="0" max="50"
+                                    [(ngModel)]="killsNumber"><span> Muertes</span>
+                                <p [class]="!isRegistred?'status':'statusTrue'">
+                                    {{!isRegistred?registerStatus:registerStatusTrue}}</p>
+                                <button class="button-save" (click)="saveChanges()">{{save}}</button>
+                            </div>
+                            <div class="col-4">
+
+                                <p class="bold table-title">Historial de Mortalidad</p>
+                                <div
+                                    style="overflow: scroll; height: 550px; border-color: black; border-width: 1px; border-style: solid;">
+                                    <table class="history-table">
+                                        <thead>
+                                            <th class="col-4 history">Fecha</th>
+                                            <th class="col-4 history">Mortalidad</th>
+                                            <th class="col-4 history">Lote</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let his of history;index as i" [attr.par]="i%2==0">
+                                                <td>{{formatDate(his.date)}}</td>
+                                                <td>{{his.dies}} Muertes</td>
+                                                <td>{{his.lot}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="d-grid col-12 d-xl-none col-xl-12">
+                    <th>{{registerMortality}}</th>
+                </tr>
+                <tr class="d-grid block d-xl-none">
+                    <td>
+                        <div class="content row">
+                            <div class="col-11" style="display: flex; justify-content: center; align-items: center;">
+                                <div class="water-content" style="margin-top: 20px;">
+                                    <img src="assets/mortality.png" class="mortality-img" alt="water"
+                                        [ngStyle]="{'height': killsNumber+'%'}">
+                                    <div class="mortality-quanty">{{killsNumber}} Muertes</div>
+                                </div>
+                            </div>
+                            <div class="col-1" style="display: flex; justify-content: center; align-items: center;">
+                                <div class="slider">
+                                    <nz-slider nzVertical [nzMin]="1" [nzMax]="50" [(ngModel)]="killsNumber">
+                                    </nz-slider>
+                                </div>
+                            </div>
+                            <div class="row info" style="padding: 20px;">
+                                <p><span class="bold">{{date}}</span>{{dateValue}}</p>
+                                <input type="number" class="input-water" [defaultValue]="1" min="1" max="50"
+                                    [(ngModel)]="killsNumber"><span> Muertes</span>
+                                <p [class]="!isRegistred?'status':'statusTrue'">
+                                    {{!isRegistred?registerStatus:registerStatusTrue}}</p>
+                                <button class="button-save" (click)="saveChanges()">{{save}}</button>
+                            </div>
+                            <p class="bold table-title">Historial de Mortalidad</p>
+                            <div
+                                style="overflow: scroll; height: 550px; border-color: black; border-width: 1px; border-style: solid;">
+                                <table class="history-table">
+                                    <thead>
+                                        <th class="col-4 history">Fecha</th>
+                                        <th class="col-4 history">Mortalidad</th>
+                                        <th class="col-4 history">Lote</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let his of history;index as i" [attr.par]="i%2==0">
+                                            <td>{{his.date}}</td>
+                                            <td>{{his.dies}} Muertes</td>
+                                            <td>{{his.lot}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p class="footer row">{{footer}}</p>
+    </div>
+</div>

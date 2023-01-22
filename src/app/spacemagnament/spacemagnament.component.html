@@ -1,0 +1,69 @@
+<div class="background2">
+    <div class="container-fluid">
+        <p class="subtitle">{{subtitle}}</p>
+
+        <table>
+            <thead>
+                <th class="col-6">{{chickenSpace}}</th>
+                <th class="d-none d-xl-table-cell col-xl-6">{{spaceChickens}}</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-12 col-xl-6">
+                        <div class="content">
+                            <div class="sheed">
+                                <p class="valuemetter">{{value1}} m2</p>
+                            </div>
+                            <nz-slider [nzMin]="1" [nzMax]="50" [(ngModel)]="value1" (ngModelChange)="calculateQuanty($event)"></nz-slider>
+                            <input class="metter" type="number" [defaultValue]="5" (input)="calculateMetters(number1.value, number2.value)"
+                                #number1 (input)="calculateQuanty(number1.value * number2.value)">
+                            <span>m</span>
+                            <span [ngStyle]="{'margin-left':'20px','margin-right':'20px', 'color':'#FFC000'}">X</span>
+                            <input class="metter" type="number" [defaultValue]="2" (input)="calculateMetters(number1.value, number2.value)"
+                                #number2 (input)="calculateQuanty(number1.value * number2.value)">
+                            <span>m</span>
+                            <p class="quanty">{{'Cantidad máxima recomendada de gallinas: '}}<span
+                                    [ngStyle]="{'color':'#FFC000'}">{{quanty}}</span></p>
+                        </div>
+                    </td>
+                    <td class="d-none d-xl-table-cell col-xl-6">
+                        <div class="content">
+                            <div class="sheed">
+                                <div *ngFor="let cy of coordy;index as i" class="chicken-point"
+                                    [ngStyle]="{'left':this.coordx[i]+'px', 'top':cy+'px'}"></div>
+                                    <p class="valuemetter">{{value2}} Gallinas</p>
+                            </div>
+                            <nz-slider [nzMin]="1" [nzMax]="1000" [(ngModel)]="value2" (ngModelChange)="calculateMeters($event)" (ngModelChange)="init()"></nz-slider>
+                            <input class="metter" min="1" max="1000" type="number" (input)="calculateMeters(chickensI.value)" (input)="updateValue(chickensI.value)" [(ngModel)]="value2" #chickensI>
+                            <span> Gallinas</span>
+                            <p class="quanty">{{'Cantidad mínima recomendada de espacio: '}}<span
+                                    [ngStyle]="{'color':'#FFC000'}">{{space+' m2'}}</span></p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="d-grid col-12 d-xl-none col-xl-12">
+                    <th>{{spaceChickens}}</th>
+                </tr>
+                <tr class="d-grid block d-xl-none">
+                    <td>
+                        <div class="content">
+                            <div class="sheed">
+                                <div *ngFor="let cy of coordy;index as i" class="chicken-point"
+                                    [ngStyle]="{'left':this.coordx[i]+'px', 'top':cy+'px'}"></div>
+                                    <p class="valuemetter">{{value2}} Gallinas</p>
+                            </div>
+                            <nz-slider [nzMin]="1" [nzMax]="1000" [(ngModel)]="value2" (ngModelChange)="calculateMeters($event)" (ngModelChange)="init()"></nz-slider>
+                            <input class="metter" type="number" min="1" max="1000" (input)="calculateMeters(chickensI.value)" (input)="updateValue(chickensI.value)" [(ngModel)]="value2" #chickensI>
+                            <span> Gallinas</span>
+                            <p class="quanty">{{'Cantidad mínima recomendada de espacio: '}}<span
+                                    [ngStyle]="{'color':'#FFC000'}">{{space+' m2'}}</span></p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p class="footer row">{{footer}}</p>
+
+    </div>
+</div>

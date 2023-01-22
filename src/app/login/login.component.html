@@ -1,0 +1,70 @@
+<div class="background">
+    <div class="container center" [ngSwitch]="viewLogin" data-aos="fade-down" data-aos-duration="1000">
+        <form *ngSwitchCase="0" (submit)="login()" [formGroup]="formLogin">
+            <p class="line">{{title}}</p>
+            <div class="label-login center">
+                <img src="assets/usernameicon.svg" alt="" class="icon">
+                <input class="login-input" type="text" [placeholder]="placeholder_username" formControlName="email">
+            </div>
+            <div class="label-login center">
+                <img src="assets/passwordicon.svg" alt="" class="icon">
+                <input class="login-input" type="password" [placeholder]="placeholder_password" formControlName="password">
+                <span style="color: red;" *ngIf="error">Error al iniciar sesión</span>
+            </div>
+            <input type="submit" [value]="submit_text" [disabled]="formLogin.invalid">
+            <br>
+            <div class="row">
+                <a (click)="changeViewLogin(1)">{{forgot_password_text}}</a>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <a [routerLink]="['/home/register']">{{signin_text}}</a>
+                </div>
+                <div class="col" style="text-align: right;">
+                    <span>O inicia sesion con:</span>
+                    <br>
+                    <br>
+                    <img class="iconAuth" (click)="loginWithGoogle()" src="assets/googleicon.png" alt="googleicon" >
+                    <img class="iconAuth" (click)="loginWithFacebook()" src="assets/facebookicon.png" alt="googleicon" >
+                </div>
+            </div>
+        </form>
+        <div action="" *ngSwitchCase="1">
+            <p class="line">{{titleRecovery}}</p>
+            <span class="security-text">{{securityText}}</span>
+            <br>
+            <span class="text">{{emailText}}</span>
+            <br>
+            <input class="forgot-input" type="text" [placeholder]="placeholderemail" #emailForgot>
+            <br>
+            <button class="back bold" type="button" (click)="changeViewLogin(0)">{{placeholderback}}</button>
+            <button class="continue bold" type="button" (click)="verifyUser(emailForgot.value)">{{placeholderNext}}</button>
+        </div>
+        <div *ngSwitchCase="2">
+            <p class="line">{{titleRecovery}}</p>
+            <br>
+            <span class="text bold">{{emailSendText}}</span>
+            <span class="text">{{seeInboxText}} <span class="textinline bold">Tiempo de expiración: {{time}}</span></span>
+            <br>
+            <input class="forgot-input" type="number" [placeholder]="placeholderCode" #code>
+            <br>
+            <button class="back bold" type="button" (click)="changeViewLogin(1)">{{placeholderback}}</button>
+            <button class="resend bold" type="button">{{placeholderResend}}</button>
+            <button class="continue bold" type="button" (click)="verifyCode(code.value)">{{placeholderNext}}</button>
+        </div>
+        <form action="" *ngSwitchCase="3">
+            <p class="line">{{titleRecovery}}</p>
+            <span class="security-text">{{succefulIdenty}}</span>
+            <br>
+            <span class="text bold">{{inputNewPass}}</span>
+            <input class="forgot-input-100" type="password" [placeholder]="placeholder_password" #newPass>
+            <br>
+            <br>
+            <span class="text bold">{{inputNewPassConfirm}}</span>
+            <input class="forgot-input-100" type="password" [placeholder]="placeholderPassConfirm" #newPassConfirm>
+            <br>
+            <button class="save bold" type="submit" (click)="changePass(newPass.value, newPassConfirm.value)">{{placeholderSave}}</button>
+        </form>
+    </div>
+</div>

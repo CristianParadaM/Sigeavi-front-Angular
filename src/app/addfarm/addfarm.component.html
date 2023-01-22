@@ -1,0 +1,57 @@
+<div class="background2">
+    <div class="container-fluid">
+        <p class="phrase row">{{phrase}}</p>
+        <p class="subtitle">{{subtitle}}</p>
+        <table>
+            <thead>
+                <th class="col-4">{{name}}</th>
+                <th class="col-4">{{quantyusers}}</th>
+                <th *ngIf="isEditable">Acciones</th>
+            </thead>
+            <tbody *ngFor="let farm of farms; index as i">
+                <tr>
+                    <td><input type="text" placeholder="Nombre de la granja" [(ngModel)]="farm.name" (keyup.enter)="setEditable(!isEditable)" [readonly]="!isEditable"></td>
+                    <td>1</td>
+                    <td *ngIf="isEditable"><img class="deleteicon" src="assets/erroricon.svg" alt="deleteicon"
+                            (click)="predeleteFarm(farm.id)" data-bs-toggle="modal" data-bs-target="#exampleModal"></td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="start row" *ngIf="farms.length == 0">{{start}}</p>
+        <div class="row">
+            <button class="col-12 col-md-6 col-xl-4 action" (click)="addFarm()">{{add}} <img
+                    src="assets/adddarkicon.svg" alt="icono" class="icon">
+            </button>
+            <div class="d-none d-xl-inline col-xl-4"></div>
+            <button class="col-12 col-md-6 col-xl-4 action" (click)="setEditable(!isEditable)" [ngSwitch]="isEditable">
+                <div *ngSwitchCase="false">
+                    {{edit}}
+                    <img src="assets/editdarkicon.svg" alt="icono" class="icon">
+                </div>
+                <div *ngSwitchCase="true">
+                    {{save}}
+                    <img src="assets/chulodarkicon.svg" alt="icono" class="icon">
+                </div>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    [ngStyle]="{'color':'black'}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Alerta</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" [ngStyle]="{'font-size':'15px'}">
+                ¿Está seguro que desea eliminar esta Granja?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="delete-farm" data-bs-dismiss="modal" (click)="deleteFarm()">Borrar</button>
+                <button type="button" class="cancel" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

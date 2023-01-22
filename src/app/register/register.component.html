@@ -1,0 +1,153 @@
+<div class="background">
+    <div class="container center" style="overflow: scroll;" [ngSwitch]="viewRegister" data-aos="fade-down"
+        data-aos-duration="1000">
+        <form *ngSwitchCase="0" (submit)="registerUser(1)" [formGroup]="formRegisterWithEmail">
+            <p class="line">{{title}}</p>
+            <span class="line subtitles bold">{{titlePersonalData}}</span>
+            <div class="row line">
+                <div class="col-12 col-md-6">
+                    <input id="1" class="register-input" type="text" placeholder="Digite su nombre"
+                        formControlName="names"
+                        [ngStyle]="formRegisterWithEmail.controls.names.valid && names.value.length > 0 ? {'border-color':'rgb(21, 255, 0)'}: names.value.length == 0?{'border-color':'black'}:{'border-color':'red'}"
+                        #names>
+                    <label for="1" class="titleborderHover"
+                        [ngStyle]="formRegisterWithEmail.controls.names.valid && names.value.length > 0 ? {'color':'rgb(21, 255, 0)'}: names.value.length == 0?{'color':'black'}:{'color':'red'}">{{placeholderNames}}</label>
+                </div>
+                <div class="col-12 col-md-6">
+                    <input id="2" class="register-input" type="text" placeholder="Digite sus apellidos"
+                        formControlName="lastnames"
+                        [ngStyle]="formRegisterWithEmail.controls.lastnames.valid && lastnames.value.length > 0 ? {'border-color':'rgb(21, 255, 0)'}: lastnames.value.length == 0?{'border-color':'black'}:{'border-color':'red'}"
+                        #lastnames>
+                    <label for="2"
+                        [ngStyle]="formRegisterWithEmail.controls.lastnames.valid && lastnames.value.length > 0 ? {'color':'rgb(21, 255, 0)'}: lastnames.value.length == 0?{'color':'black'}:{'color':'red'}"
+                        class="titleborderHover">{{placeholderLastNames}}</label>
+                </div>
+            </div>
+            <div class="row line">
+                <div class="col-12 col-md-6">
+                    <input id="3" class="register-input" type="text" placeholder="Digite su email"
+                        formControlName="email"
+                        [ngStyle]="formRegisterWithEmail.controls.email.valid && email.value.length > 0 ? {'border-color':'rgb(21, 255, 0)'}: email.value.length == 0?{'border-color':'black'}:{'border-color':'red'}"
+                        #email>
+                    <label for="3"
+                        [ngStyle]="formRegisterWithEmail.controls.email.valid && email.value.length > 0 ? {'color':'rgb(21, 255, 0)'}: email.value.length == 0?{'color':'black'}:{'color':'red'}"
+                        class="titleborderHover">{{placeholderEmail}}</label>
+                </div>
+                <div class="col-12 col-md-6">
+                    <input id="4" class="register-input" type="number" placeholder="Digite su número de teléfono"
+                        formControlName="phone" [maxLength]="10"
+                        [ngStyle]="formRegisterWithEmail.controls.phone.valid && phone.value.length > 0 ? {'border-color':'rgb(21, 255, 0)'}: phone.value.length == 0?{'border-color':'black'}:{'border-color':'red'}"
+                        #phone>
+                    <label for="4"
+                        [ngStyle]="formRegisterWithEmail.controls.phone.valid && phone.value.length > 0 ? {'color':'rgb(21, 255, 0)'}: phone.value.length == 0?{'color':'black'}:{'color':'red'}"
+                        class="titleborderHover">{{placeholderPhone}}</label>
+                </div>
+            </div>
+            <div class="row line">
+                <div class="col-12 col-md-6">
+                    <input id="5" class="register-input" type="number" placeholder="Digite su número de identificación"
+                        formControlName="id" [maxlength]="10"
+                        [ngStyle]="formRegisterWithEmail.controls.id.valid && id.value.length > 0 ? {'border-color':'rgb(21, 255, 0)'}: id.value.length == 0?{'border-color':'black'}:{'border-color':'red'}"
+                        #id>
+                    <label for="5"
+                        [ngStyle]="formRegisterWithEmail.controls.id.valid && id.value.length > 0 ? {'color':'rgb(21, 255, 0)'}: id.value.length == 0?{'color':'black'}:{'color':'red'}"
+                        class="titleborderHover">{{placeholderId}}</label>
+                </div>
+                <div class="col-12 col-md-6">
+                    <input id="6" class="register-input" type="password"
+                        placeholder="Digite su contraseña (min 8 digitos)" formControlName="pass"
+                        [ngStyle]="formRegisterWithEmail.controls.pass.valid && pass.value.length > 0 ? {'border-color':'rgb(21, 255, 0)'}: pass.value.length == 0?{'border-color':'black'}:{'border-color':'red'}"
+                        #pass>
+                    <label for="6"
+                        [ngStyle]="formRegisterWithEmail.controls.pass.valid && pass.value.length > 0 ? {'color':'rgb(21, 255, 0)'}: pass.value.length == 0?{'color':'black'}:{'color':'red'}"
+                        class="titleborderHover">{{placeholderPassword}}</label>
+                </div>
+            </div>
+            <div class="row line">
+                <div class="col-12 col-md-6">
+                    <input id="7" class="register-input" type="password" placeholder="Digite nuevamente su contraseña"
+                        formControlName="passC"
+                        [ngStyle]="formRegisterWithEmail.controls.passC.valid && passC.value.length > 0 ? {'border-color':'rgb(21, 255, 0)'}: passC.value.length == 0?{'border-color':'black'}:{'border-color':'red'}"
+                        #passC>
+                    <label for="7"
+                        [ngStyle]="formRegisterWithEmail.controls.passC.valid && passC.value.length > 0 ? {'color':'rgb(21, 255, 0)'}: passC.value.length == 0?{'color':'black'}:{'color':'red'}"
+                        class="titleborderHover">{{placeholderPasswordC}}</label>
+                </div>
+                <div class="col-12 col-md-6"></div>
+            </div>
+            <div class="Fline"></div>
+            <button type="submit" [disabled]="formRegisterWithEmail.invalid">Registrar</button>
+            <div class="FlineS"></div>
+            <span class="text" style="text-decoration: underline;">Recuerda que:</span>
+            <span class="text-secundary">
+                <span
+                    [ngStyle]="formRegisterWithEmail.controls.phone.status == 'INVALID'?{'color':'red'}:{'color':'green'}"
+                    class="param">Tu numero de telefono tiene que tener al menos 10 digitos <img
+                        [src]="formRegisterWithEmail.controls.phone.status == 'INVALID'? 'assets/erroricon.svg':'assets/chuloicon.svg'"
+                        alt="icon" class="icon"> </span>
+                <br>
+                <span
+                    [ngStyle]="formRegisterWithEmail.controls.email.status == 'INVALID'?{'color':'red'}:{'color':'green'}"
+                    class="param">Tu correo debe ser válido <img
+                        [src]="formRegisterWithEmail.controls.email.status == 'INVALID'? 'assets/erroricon.svg':'assets/chuloicon.svg'"
+                        alt="icon" class="icon"></span>
+                <br>
+                <span
+                    [ngStyle]="formRegisterWithEmail.controls.pass.status == 'INVALID'?{'color':'red'}:{'color':'green'}"
+                    class="param">Tu contraseña contiene al menos 1 Mayus, 1 Minus y 1 digito <img
+                        [src]="formRegisterWithEmail.controls.pass.status == 'INVALID'? 'assets/erroricon.svg':'assets/chuloicon.svg'"
+                        alt="icon" class="icon"></span>
+                <br>
+                <span
+                    [ngStyle]="formRegisterWithEmail.controls.passC.status == 'INVALID'?{'color':'red'}:{'color':'green'}"
+                    class="param">Tu contraseña debe coincidir con la contraseña de confirmación <img
+                        [src]="formRegisterWithEmail.controls.passC.status == 'INVALID'? 'assets/erroricon.svg':'assets/chuloicon.svg'"
+                        alt="icon" class="icon"></span>
+            </span>
+        </form>
+        <form *ngSwitchCase="2" (submit)="registerUser(2)" [formGroup]="formRegisterWithSocialN">
+            <p class="line">{{title}}</p>
+            <span class="line text">Hemos detectado que eres un nuevo usuario, por favor llena los campos faltantes para
+                crearte una cuenta nueva en SIGEAVI</span>
+            <span class="line subtitles bold">Datos Personales</span>
+            <div class="row line">
+                <div class="col-12 col-md-6">
+                    <input id="9" class="register-input" type="text" [placeholder]="placeholderNames"
+                        formControlName="namesSocial" [value]="routerActive.snapshot.params['name']">
+                    <label for="9" class="titleborderHover">{{placeholderNames}}</label>
+                </div>
+                <div class="col-12 col-md-6">
+                    <input id="10" class="register-input" type="text" [placeholder]="placeholderLastNames"
+                        formControlName="lastnamesSocial">
+                    <label for="10" class="titleborderHover">{{placeholderLastNames}}</label>
+                </div>
+            </div>
+            <div class="row line">
+                <div class="col-12 col-md-6">
+                    <input id="11" class="register-input" type="text" [placeholder]="placeholderEmail" disabled
+                        formControlName="emailSocial" [value]="routerActive.snapshot.params['email']">
+                    <label for="11" class="titleborderHover">{{placeholderEmail}}</label>
+                </div>
+                <div class="col-12 col-md-6">
+                    <input id="12" class="register-input" type="number" [placeholder]="placeholderPhone" required
+                        formControlName="phoneSocial" [maxlength]="10">
+                    <label for="12" class="titleborderHover">{{placeholderPhone}}</label>
+                </div>
+            </div>
+            <div class="row line">
+                <div class="col-12 col-md-6">
+                    <input id="13" class="register-input" type="number" [placeholder]="placeholderId" required
+                        formControlName="idSocial" [maxlength]="10">
+                    <label for="13" class="titleborderHover">{{placeholderId}}</label>
+                </div>
+                <div class="col-12 col-md-6">
+                </div>
+            </div>
+            <div class="Fline"></div>
+            <button type="submit" [disabled]="formRegisterWithSocialN.invalid">{{placeholderRegister}}</button>
+            <div class="FlineS"></div>
+            <div class="Fline"></div>
+            <div class="Fline"></div>
+        </form>
+    </div>
+</div>

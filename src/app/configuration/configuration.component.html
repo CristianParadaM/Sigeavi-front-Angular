@@ -1,0 +1,47 @@
+<div class="background2">
+    <div class="container-fluid">
+        <div class="content">
+            <p class="title">Datos Personales</p>
+            <hr>
+            <div class="row">
+                <div class="col content-img">
+                    <img src="assets/user.png" alt="user img" class="img">
+                </div>
+                <div class="col">
+                    <b>Nombres:</b><br>
+                    <input type="text" [(ngModel)]="infoUser[0]['names']" [disabled]="!isEdit">
+                    <b>Apellidos:</b><br>
+                    <input type="text" [(ngModel)]="infoUser[0]['lastnames']" [disabled]="!isEdit">
+                    <b>Correo Electrónico:</b><br>
+                    <p>{{infoUser[0]['email']}}</p>
+                    <b>Numero de identificación:</b><br>
+                    <p>{{infoUser[0]['idPerson']}}</p>
+                </div>
+                <div class="col">
+                    <b>Teléfono:</b><br>
+                    <input type="text" [(ngModel)]="infoUser[0]['phone']" [disabled]="!isEdit">
+                    <b>Tipo de usuario:</b><br>
+                    <p>{{infoUser[0]['userType']}}</p>
+                    <b>Estado del usuario:</b><br>
+                    <div class="active"></div><span>Activo</span><br><br>
+                    <button (click)="edit()">{{isEdit?'Guardar':'Actualizar Información'}}</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="content" style="margin-top: 30px;">
+            <p class="title">Datos de Usuario</p>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <b>Numero de Usuario:</b><br>
+                    <p>{{infoUser[0]['id']}}</p>
+                </div>
+                <div class="col"></div>
+                <div class="col">
+                    <button>Cambiar Contraseña</button>
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>

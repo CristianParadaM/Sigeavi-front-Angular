@@ -1,0 +1,147 @@
+.container-fluid {
+    width: 100%;
+    height: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+    background-color: rgb(125, 95, 69);
+}
+
+
+
+.subtitle {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+table {
+    background-color: #FFE699;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    color: black;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.sheed {
+    position: relative;
+    width: 90%;
+    height: 300px;
+    background-color: #A28750;
+    border-width: 6px;
+    border-color: #3E291E;
+    border-style: solid;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-left: 5%;
+    margin-right: 5%;
+    overflow: scroll;
+}
+
+td {
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+th {
+    background-color: #FFDE75;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.footer {
+    color: white;
+    font-size: 28px;
+    text-align: center;
+    margin-top: 30px;
+    -webkit-text-stroke-color: #ED7D31;
+    -webkit-text-stroke-width: 1px;
+}
+
+.metter {
+    width: 90px;
+    border-radius: 5px;
+    background-color: #FFDE75;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.quanty {
+    text-align: left;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.content {
+    padding: 30px;
+}
+
+.ant-slider-track {
+    background-color: #614435 !important;
+}
+
+.valuemetter {
+    opacity: 0.3;
+    color: white;
+    font-weight: bold;
+    font-size: 80px;
+    line-height: 300px;
+    z-index: 20;
+}
+
+.chicken-point {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    display: inline-flex;
+    background-color: #FFC000;
+    border-radius: 50%;
+}
+
+@media (max-width:768px) {
+    .container-fluid {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+    }
+
+    td, .quanty {
+        font-size: 15px;
+    }
+
+    th,
+    .footer {
+        font-size: 18px;
+    }
+
+    .subtitle {
+        text-align: center;
+    }
+
+    .sheed {
+        width: 100%;
+        height: 200px;
+        background-color: #A28750;
+        border: 3px solid #3E291E;
+        margin: 10px 0 20px 0;
+    }
+
+    .content{
+        padding: 10px;
+    }
+
+    .valuemetter {
+        font-size: 50px;
+        line-height: 200px;
+    }
+
+    .chicken-point {
+        width: 15px;
+        height: 15px;
+    }
+}

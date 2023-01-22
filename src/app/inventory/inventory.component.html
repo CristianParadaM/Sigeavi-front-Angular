@@ -1,0 +1,137 @@
+<div class="background2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-xl-4">
+                <div>
+                    <p class="subtitle">{{subtitle}}</p>
+                    <p class="paragraph">{{paragraph1}}</p>
+                    <br>
+                    <p class="paragraph">{{paragraph2}}</p>
+                    <br>
+                    <p class="paragraph">{{paragraph3}}</p>
+                </div>
+                    <form class="content" [formGroup]="formAddFood" *ngIf="isAddFood" data-aos="flip-left" data-aos-duration="500">
+                        <p class="subtitle2 center bold">{{newFood}}</p>
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <input id="1" class="input-add" type="number" list="codelist" [placeholder]="placeholdercode" formControlName="code">
+                                <label for="1" class="titleborderHover">{{code}}</label>
+
+                                <input id="2" class="input-add" type="text" list="marklist" [placeholder]="placeholdermark" formControlName="mark">
+                                <label for="2" class="titleborderHover">{{mark}}</label>
+
+                                <input id="3" class="input-add" type="number" placeholder="Digite la cantidad" formControlName="quanty">
+                                <label for="3" class="titleborderHover">{{quanty}}</label>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <input id="4" class="input-add" type="text" list="nameList" [placeholder]="placeholdername" formControlName="name">
+                                <label for="4" class="titleborderHover">{{name}}</label>
+                                
+                                <input id="5" class="input-add" type="number" placeholder="Digite el precio" formControlName="price" >
+                                <label for="5" class="titleborderHover">{{price}}</label>
+                                
+                                <input id="6" class="input-add" type="number" placeholder="Digite el peso" formControlName="weight">
+                                <label for="6" class="titleborderHover">{{weight}}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <button type="submit" class="save" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" [disabled]="formAddFood.invalid">{{save}}</button>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <button type="button" class="cancel" (click)="cancelForm()">{{cancel}}</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <datalist id="nameList">
+                        <option *ngFor="let product of foodsInventory" [value]="product.name">
+                    </datalist>
+                    <datalist id="markList">
+                        <option *ngFor="let product of foodsInventory" [value]="product.mark">
+                    </datalist>
+                    <datalist id="codeList">
+                        <option *ngFor="let product of foodsInventory" [value]="product.code">
+                    </datalist>
+            </div>
+            <!-- Table -->
+            <div class="col-12 col-xl-8">
+                <table>
+                    <thead>
+                        <th class="col-2" (click)="order(0)">{{codeFood}}<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+                        <th class="col-2" (click)="order(0)">{{nameFood}}<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+                        <th class="col-2" (click)="order(1)">{{markFood}}<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+                        <th class="col-2" (click)="order(2)">{{quantyFood}}<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+                        <th class="col-2" (click)="order(2)">{{weightFood}}<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let p of foodsInventory; index as i" [attr.par]="i%2==0" (click)="select(p.name, p.code)">
+                            <td>{{p.code}}</td>
+                            <td>{{p.name}}</td>
+                            <td>{{p.mark}}</td>
+                            <td>{{p.quanty}}</td>
+                            <td>{{p.weight}} Kg</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="controls row">
+                    <div class="d-none d-md-inline col-md-3" style="display: flex; justify-content: center;">
+                        <button class="add" (click)="addFood()" [disabled]="isAddFood" >{{add}}</button>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="search">
+                            <input class="search-input" type="text" [placeholder]="search" (input)="filtre(searchBar.value)" #searchBar>
+                            <img src="assets/lupawhiteicon.svg" alt="lupa" class="icon">
+                        </div>
+                    </div>
+                    <div class="d-inline d-md-none col-12">
+                        <button class="add" style="width: 100%;" (click)="addFood()" [disabled]="isAddFood" >{{add}}</button>
+                    </div>
+                    <div class="col-12 col-md-3" style="display: flex; justify-content: center;">
+                        <button class="action-table" (click)="backControl()">{{back}}</button>
+                        <button class="action-table" *ngFor="let c of countPages; index as i"
+                            [attr.selected]="selected===i" (click)="selectControl(i)">{{c}}</button>
+                        <button class="action-table" (click)="nextControl()">{{next}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    [ngStyle]="{'color':'black'}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmación</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" [ngStyle]="{'font-size':'15px'}">
+                ¿Está seguro que desea agregar este nuevo alimento?
+                <br>
+                Alimento a agregar:
+                <br>
+                <b>Código:</b> {{formAddFood.value.code}}
+                <br>
+                <b>Nombre:</b> {{formAddFood.value.name}}
+                <br>
+                <b>Marca:</b> {{formAddFood.value.mark}}
+                <br>
+                <b>Precio:</b> ${{formAddFood.value.price}}
+                <br>
+                <b>Cantidad:</b> {{formAddFood.value.quanty}} unidades
+                <br>
+                <b>Peso:</b> {{formAddFood.value.weight}} kg
+                <br>
+                <b>Inventario a agregar</b> 1
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="add-m" data-bs-dismiss="modal" (click)="saveForm()">Agregar</button>
+                <button type="button" class="cancel-m" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+<div class="background2">
+    <div class="container-fluid">
+        <p class="subtitle">{{subtitle}}</p>
+        <table class="principal-table">
+            <thead>
+                <th class="col-2">{{lot}}</th>
+                <th class="d-none d-xl-table-cell col-xl-10">{{vacunations}}</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-12 col-xl-2">
+                        <div class="content">
+                            <div class="search">
+                                <input type="text" class="searchInput" name="search" placeholder="Buscar Lote"
+                                    (input)="filter(search.value)" #search>
+                                <img src="assets/lupawhiteicon.svg" alt="icon" width="20px" class="icon">
+                            </div>
+                            <div class="row">
+                                <table class="table-lots">
+                                    <thead>
+                                        <th class="header-lots col-6">Lotes</th>
+                                        <th class="header-lots col-6">Galpón</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="row-lots" *ngFor="let lot of lots;index as i" [attr.par]="i%2==0"
+                                            (click)="select(lot.id, i)" [attr.selected]="selectedLots[i]==1">
+                                            <td class="lot-cell">{{lot.lot}}</td>
+                                            <td class="lot-cell">{{lot.sheed}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="d-none d-xl-table-cell col-xl-10">
+                        <div class="content row">
+                            <div class="col-3">
+                                <p class="subtitle2">{{subtitle2}}</p>
+                                <p class="pharagraph">{{pharagraph1}}</p>
+                                <p class="pharagraph">{{pharagraph2}}</p>
+                                <p class="pharagraph">{{pharagraph3}}</p>
+                                <p class="pharagraph">{{pharagraph4}}</p>
+                            </div>
+                            <div class="col-9">
+                                <div style="height: 530px; margin-top: 25px; overflow: scroll; border-color: black;
+                                border-width: 1px;
+                                border-style: solid;">
+                                    <table class="secundary-table">
+                                        <thead>
+                                            <th class="col-3 timeline">{{illness}}</th>
+                                            <th class="col-3 timeline">{{dateRecomended}}</th>
+                                            <th class="col-3 timeline">{{aplication}}</th>
+                                            <th class="col-3 timeline">{{observations}}</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let vaccin of vaccines">
+                                                <td>{{vaccin.illness}}</td>
+                                                <td>{{vaccin.date}}</td>
+                                                <td>{{vaccin.aplication}}</td>
+                                                <td><textarea class="row-input" type="text"
+                                                        [(ngModel)]="vaccin.observations" placeholder="Observaciones.."
+                                                        [disabled]="!isEdit">{{vaccin.observations}}</textarea></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row" style="margin-top: 10px;">
+                                    <button class="col-6 controls" [attr.selected]="selected == 0"
+                                        (click)="edit()">{{isEdit?'Guardar':editText}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="d-grid col-12 d-xl-none col-xl-12">
+                    <th>{{vacunations}}</th>
+                </tr>
+                <tr class="d-grid block d-xl-none">
+                    <td>
+                        <div class="content">
+                            <div class="row">
+                                <p class="subtitle2">{{subtitle2}}</p>
+                                <p class="pharagraph">{{pharagraph1}}</p>
+                                <p class="pharagraph">{{pharagraph2}}</p>
+                                <p class="pharagraph">{{pharagraph3}}</p>
+                                <p class="pharagraph">{{pharagraph4}}</p>
+                            </div>
+                            <div class="row">
+                                <div style="height: 530px; margin-top: 25px; overflow: scroll; border-color: black;
+                                border-width: 1px;
+                                border-style: solid;">
+                                    <table class="secundary-table">
+                                        <thead>
+                                            <th class="col-3 timeline">{{illness}}</th>
+                                            <th class="col-3 timeline">{{dateRecomended}}</th>
+                                            <th class="col-3 timeline">{{aplication}}</th>
+                                            <th class="col-3 timeline">{{observations}}</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let vaccin of vaccines">
+                                                <td>{{vaccin.illness}}</td>
+                                                <td>{{vaccin.date}}</td>
+                                                <td>{{vaccin.aplication}}</td>
+                                                <td><textarea class="row-input" type="text"
+                                                        [(ngModel)]="vaccin.observations" placeholder="Observaciones.."
+                                                        [disabled]="!isEdit">{{vaccin.observations}}</textarea></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row" style="margin-top: 10px;">
+                                    <button class="col-6 controls" [attr.selected]="selected == 0"
+                                        (click)="edit()">{{isEdit?'Guardar':editText}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

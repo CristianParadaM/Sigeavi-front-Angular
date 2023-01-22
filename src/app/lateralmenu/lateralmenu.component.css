@@ -1,0 +1,285 @@
+.lateral{
+    height: 100vh;
+    width: 85px;
+    background: linear-gradient(to bottom, #432F25, #231711);
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+    border-right-width: 1px;
+    border-left-width: 0px;
+    border-color: #FFF7E1;
+    border-style: solid;
+    position: fixed;
+    z-index: 200;
+}
+
+.lateral:hover{
+    width: 300px;
+}
+
+.logo{
+    width: 80px;
+    height: 56px;
+}
+
+.line{
+    background-color: #FFF7E1;
+    height: 1px;
+    width: 100%;
+}
+
+.subtitle{
+    color: #FFF7E1;
+    font-size: 20px;
+    -webkit-text-stroke-color: #EF6A2F;
+    -webkit-text-stroke-width: 1px;
+}
+
+.subtitle2{
+    color: #FFF7E1;
+    font-size: 20px;
+    -webkit-text-stroke-color: #FFF7E1;
+    -webkit-text-stroke-width: 1px;
+}
+
+.option{
+    -webkit-text-stroke-color: #FFF7E1;
+    -webkit-text-stroke-width: 1px;
+    text-align: center;
+    font-size: 20px;
+    height: 56px;
+    line-height: 56px;
+}
+
+.col{
+    height: 56px;
+}
+
+.accordion{
+    background-color: transparent;
+    width: 95%;
+    margin-left: 2.5%;
+    border-radius: 10px;
+}
+
+.btn-option{
+    border-radius: 10px;
+    height: 56px;
+}
+
+.accordion-item:hover, .btn-option:hover{
+    background-color: #614435;
+    cursor: pointer;
+}
+
+.accordion-button{
+    padding: 0px;
+    background-color: transparent;
+    height: 56px;
+}
+
+.accordion-item{
+    margin-top: 5px;
+    background-color: transparent;
+    border: none;
+    margin-bottom: 5px;
+}
+
+.accordion-button:not(.collapsed)::after{
+    margin-right: 10px;
+    background-image: url("./../../assets/flecha.png");
+}
+.accordion-button::after{
+    margin-right: 10px;
+    background-image: url("./../../assets/flecha.png");
+}
+
+.accordion-button:focus{
+    border-color: transparent;
+}
+
+.accordion-button:not(.collapsed), .accordion-button:focus{
+    box-shadow: 0 0 0px transparent;
+}
+
+.accordion-option{
+    color: #FFF7E1;
+    background-color: transparent;
+    width: 100%;
+    border: none;
+    font-size: 20px;
+    text-align: left;
+    height: 56px;
+    line-height: 56px;
+}
+
+.accordion-option:hover{
+    color: #FFF7E1;
+    background-color: #432F25;
+    width: 100%;
+    border: none;
+    font-size: 20px;
+}
+
+.accordion-body{
+    padding: 0px;
+}
+
+img[title="1"]{
+    background-color: #614435;
+}
+
+img[title="-1"]{
+    background-color: transparent;
+}
+
+
+.icon{
+    margin-top: 5px;
+    width: 80px;
+    height: 56px;
+    margin-bottom: 5px;
+}
+
+.subicon{
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+nav{
+    background: linear-gradient(to bottom, #432F25, #231711);
+    height: 72px;
+    position: fixed;
+    top: 0px;
+    width: calc(100vw);
+    border-bottom-width: 1px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-color: #FFF7E1;
+    border-style: solid;
+    z-index: 100;
+}
+
+.title{
+    margin-left: 85px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 72px;
+}
+
+.curtain{
+    background-color: rgba(0,0,0,0.6);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 50;
+}
+
+.logout-panel{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #4D3529,#614435);
+    position: fixed;
+    right: 10px;
+    top: 82px;
+    border-bottom-width: 1px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-color: #FFF7E1;
+    border-style: solid;
+    z-index: 3;
+}
+
+.subtitle{
+    color: #FFF7E1;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    -webkit-text-stroke-color: #EF6A2F;
+    -webkit-text-stroke-width: 1px;
+}
+
+.icon-header{
+    position: absolute;
+    right: 10px;
+    top: 13px;
+    padding: 10px;
+    width: 25px;
+    height: 25px;
+}
+
+.icon-bars{
+    display: none;
+    position: absolute;
+    left: 10px;
+    top: 13px;
+    padding: 10px;
+    width: 25px;
+    height: 25px;
+}
+
+.icon-header:hover, .icon-bars:hover{
+    cursor: pointer;
+    background-color: #614435;
+    border-radius: 10px;
+}
+
+#logout-button{
+    color: #FFF7E1;
+    font-size: 20px;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+}
+
+.label-check{
+    display: contents;
+}
+
+#check{
+    display: none;
+}
+
+#logout-button:hover{
+    background-color: #432F25;
+}
+
+@media (max-height:800px) {
+    .icon{
+        margin-left: 10px;
+        width: 60px;
+        height: 46px;
+    } 
+
+}
+
+@media (max-width:768px) {
+    .lateral{
+        width: 100vw;
+        transform: translate(-100vw,0px);
+        transition: all .5s;
+    }
+
+    .icon-bars{
+        display: inline;
+    }
+
+    .lateral:hover{
+        width: 100vw;
+    }
+
+    .title{
+        margin-left: 0px;
+    }
+
+    #check:checked~.lateral {
+        transition: all .5s;
+        transform: translate(0px,0px);
+    }
+    
+    
+}

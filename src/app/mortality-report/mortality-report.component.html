@@ -1,0 +1,60 @@
+<div class="background2">
+    <div class="container-fluid">
+       <div class="table">
+        <p class="row title">Reporte de Mortalidad Entre un Rango de Fechas</p>
+        <form class="row" [formGroup]="formDates" style="margin-bottom: 50px;" (submit)="verifyDates()">
+            <div class="col-12 col-md-2 col-lg-3" style="margin-bottom: 20px;">
+                <input id="1" class="input-date" type="date" placeholder="Digite la fecha inicial" formControlName="initialDate">
+                <label for="1" class="titleborderHover">Fecha Inicial</label>
+            </div>
+            <div class="col-12 col-md-2 col-lg-3" style="margin-bottom: 20px;">
+                <input id="2" class="input-date" type="date" placeholder="Digite la fecha inicial" formControlName="finalDate">
+                <label for="2" class="titleborderHover">Fecha Final</label>
+            </div>
+            <div class="col-12 col-md-2 col-lg-3" >
+                <button type="submit" class="calculate">Calcular</button>
+            </div>
+        </form>
+        <div *ngIf="isVisible" style="overflow: scroll;">
+            <div class="row" >
+                <div class="col-12 col-xl-6" *ngFor="let graph of infoGraph">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <ngx-charts-bar-vertical
+                            [view]="graph.view"
+                            [scheme]="graph.scheme"
+                            [results]="graph.results"
+                            [gradient]="graph.gradient"
+                            [xAxis]="graph.xAxis"
+                            [yAxis]="graph.yAxis"
+                            [legend]="graph.legend"
+                            [showXAxisLabel]="graph.showXAxisLabel"
+                            [showYAxisLabel]="graph.showYAxisLabel"
+                            [xAxisLabel]="graph.xAxisLabel"
+                            [yAxisLabel]="graph.yAxisLabel">
+                        </ngx-charts-bar-vertical>
+                    </div>
+                    <br>
+                    <div class="footer">
+                        <span class="subtitle">Muertes Totales del lote</span>
+                        <br>
+                        <span><b>{{getTotalConsum(graph.id)}}</b> Aves</span>
+                        <br>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <p class="row title">Porcentajes Totales Mortalidad en la Granja</p>
+            <div class="row" *ngFor="let a of aux">
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <ngx-charts-pie-grid 
+                        [view]="[400,900]"
+                        [scheme]="colorScheme"
+                        [results]="pieChart">
+                    </ngx-charts-pie-grid>
+                </div>
+                <p [attr.aux]="a"></p>
+            </div>
+        </div>
+       </div>
+    </div>
+</div>

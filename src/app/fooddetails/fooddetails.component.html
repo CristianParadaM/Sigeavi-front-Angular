@@ -1,0 +1,64 @@
+<div class="background2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-4 col-md-3 col-xl-1"><button class="back-inventory" (click)="backInventory()"></button></div>
+            <div class="col-8 col-md-9 col-xl-11">
+                <p class="subtitle">{{foodSearched}}<span style="color: #FFC000;">{{nameFoodSearched}}</span> </p>
+            </div>
+        </div>
+        <table>
+            <thead>
+
+                <th class="d-table-cell d-md-none col-1" (click)="order(0)" >Cod<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+                <th class="d-table-cell d-md-none col-2" (click)="order(1)" >Nom<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+                <th class="d-table-cell d-md-none col-2" (click)="order(2)" >Mar<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+                <th class="d-table-cell d-md-none col-1" (click)="order(3)" >Pes<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+                <th class="d-table-cell d-md-none col-2" (click)="order(4)" >Pre<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+                <th class="d-table-cell d-md-none col-1" (click)="order(5)" >Can<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+                <th class="d-table-cell d-md-none col-2" (click)="order(6)" >Dat<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+                <th class="d-table-cell d-md-none col-1" (click)="order(7)" >Inv<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+                
+                <th class="d-none d-md-table-cell col-1" (click)="order(0)" >{{codeFood}}<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+                <th class="d-none d-md-table-cell col-2" (click)="order(1)" >{{nameFood}}<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+                <th class="d-none d-md-table-cell col-2" (click)="order(2)" >{{markFood}}<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+                <th class="d-none d-md-table-cell col-1" (click)="order(3)" >{{weightFood}}<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+                <th class="d-none d-md-table-cell col-2" (click)="order(4)" >{{priceFood}}<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+                <th class="d-none d-md-table-cell col-1" (click)="order(5)" >{{quantyFood}}<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+                <th class="d-none d-md-table-cell col-2" (click)="order(6)" >{{dateFood}}<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+                <th class="d-none d-md-table-cell col-1" (click)="order(7)" >{{inventoryFood}}<img src="assets/filtrodark.svg" alt="" class="icon"></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of foodsInventory; index as i" [attr.par]="i%2==0">
+                    <td> {{p.code}}</td>
+                    <td> {{p.name}}</td>
+                    <td>{{p.mark}}</td>
+                    <td>{{p.weight}} kg</td>
+                    <td>${{p.price}}</td>
+                    <td><input type="number" [value]="p.quanty" [disabled]="!isEdit" (input)="add(quanty.value, p.inventory)" #quanty></td>
+                    <td>{{p.date}}</td>
+                    <td>{{p.inventory}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="controls row">
+            <div class="d-none d-md-inline col-md-3" style="display: flex; justify-content: center;">
+                <button class="edit" (click)="editInventory()">{{isEdit?'Guardar':'Editar'}}</button>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="search">
+                    <input class="search-input" type="text" [placeholder]="search" (input)="filtre(searchbar.value)" #searchbar>
+                    <img src="assets/lupawhiteicon.svg" alt="lupa" class="icon">
+                </div>
+            </div>
+            <div class="d-inline d-md-none col-12">
+                <button class="edit" style="width: 100%;" (click)="editInventory()" >{{isEdit?'Guardar':'Editar'}}</button>
+            </div>
+            <div class="col-12 col-md-3" style="display: flex; justify-content: center;">
+                <button class="action-table" (click)="backControl()">{{back}}</button>
+                <button class="action-table" *ngFor="let c of countPages; index as i" [attr.selected]="selected===i"
+                    (click)="selectControl(i)">{{c}}</button>
+                <button class="action-table" (click)="nextControl()">{{next}}</button>
+            </div>
+        </div>
+    </div>
+</div>

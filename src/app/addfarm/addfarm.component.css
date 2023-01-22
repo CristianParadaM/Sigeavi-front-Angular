@@ -1,0 +1,168 @@
+.container-fluid {
+    width: 100%;
+    height: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+    background-color: rgb(125, 95, 69);
+}
+
+.phrase{
+    display: block;
+    text-align: center;
+    font-size: 28px;
+    -webkit-text-stroke-color: #FFC000;
+    -webkit-text-stroke-width: 1px;
+}
+
+table{
+    font-size: 22px;
+    width: 100%;
+    color: #3E291E;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.subtitle{
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+th{
+    background-color: #FFDE75;
+    text-align: center;
+}
+
+tr{
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+td{
+    text-align: center;
+    background-color: #FFE699;
+}
+
+.magnament{
+    display: inline-block;
+    background-color: #FFC000;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+}
+
+.start{
+    padding-top: 200px;
+    padding-bottom: 200px;
+    display: block;
+    text-align: center;
+    font-size: 28px;
+    color: black;
+    -webkit-text-stroke-color: #3E291E;
+    -webkit-text-stroke-width: 1px;
+    background-color: #FFE699;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.active{
+    display: inline-block;
+    background-color: green;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+}
+
+input{
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    width: 100%;
+}
+
+input:not([readonly]){
+    border-color: #3E291E;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-style: solid;
+}
+
+.action{
+    background-color: #FFDE75;
+    font-size: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    position: relative;
+    color: black;
+}
+
+.icon{
+    width: 30px;
+    position: absolute;
+    right: 10px;
+}
+
+.deleteicon{
+    width: 30px;
+}
+
+.deleteicon:hover{
+    cursor: pointer;
+}
+
+.delete-farm{
+    font-size: 15px;
+    width: 100px;
+    background-color: coral;
+}
+
+.cancel{
+    font-size: 15px;
+    width: 100px;
+    background-color: #FFE699;
+}
+
+.remove{
+    height: 20px;
+    width: 20px;
+    background-color: coral;
+}
+
+@media (max-width:900px) {
+    table{
+        font-size: 15px;
+    }
+
+    .phrase{
+        font-size: 20px;
+    }
+
+    .subtitle{
+        font-size: 20px;
+    }
+
+    button{
+        font-size: 15px;
+    }
+
+    .icon{
+        width: 20px;
+    }
+
+    .deleteicon{
+        width: 20px;
+    }
+
+    .container-fluid {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}

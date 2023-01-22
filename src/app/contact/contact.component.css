@@ -1,0 +1,62 @@
+a > svg{ 
+    color: white;
+    margin-top: 60px;
+    font-size: 50px;
+    width: 70px;
+}
+
+
+svg{
+    font-size: 22px;
+}
+
+li, ul{
+    margin-top: 10px;
+    display: flex;
+    font-size: 16px;
+    margin-right: 50px;
+}
+
+p{
+    margin-top: 60px;
+    margin-bottom: 100px;
+    font-size: 13px;
+}
+
+.container-fluid{
+    background-color: rgb(29, 22, 22);
+    transform: translate(0px, 85px);
+}
+
+@media (max-width:850px) {
+    li, ul{
+        display: block;
+    }
+
+    p{
+        margin-bottom: 150px;
+    }
+}
+
+@media (max-width:970px) {
+    .container-fluid{
+        transform: translate(0px,65px);
+    }
+}
+
+@media (max-width:768px) {
+    a > svg{ 
+        font-size: 30px;
+    }
+    
+    svg{
+        font-size: 18px;
+    }
+
+    li, ul{
+        margin-top: 10px;
+        font-size: 15px;
+        margin-right: 0px;
+    }
+    
+}

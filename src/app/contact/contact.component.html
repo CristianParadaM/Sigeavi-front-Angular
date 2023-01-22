@@ -1,0 +1,16 @@
+<div class="container-fluid" [ngStyle]="!isMenu ? {'transform':'translate(0px, 85px)'} : {'transform':'translate(0px, 0px)'}">
+    <div class="separator"></div>
+    <div class="row">
+        <div class="center" data-aos="fade-down" data-aos-duration="1000">
+            <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a> 
+            <a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a> 
+            <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a> 
+        </div>
+        <ul class="center" >
+            <li data-aos="fade-up" data-aos-duration="500"><i class="fa-solid fa-envelope"></i>{{emailSupport}}</li>
+            <li data-aos="fade-up" data-aos-duration="1000"><i class="fa-solid fa-phone"></i>{{phoneNumber1}}</li>
+            <li data-aos="fade-up" data-aos-duration="1500"><i class="fa-solid fa-phone"></i>{{phoneNumber2}}</li>
+        </ul>
+        <p class="center" data-aos="flip-left">{{copyRightText}}</p>
+    </div>
+</div>

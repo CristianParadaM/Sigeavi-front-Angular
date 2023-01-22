@@ -1,0 +1,35 @@
+.mycard{
+    color: white;
+    display: inline-block;
+    height: 500px;
+    background-color:  rgb(42, 32, 28);
+    border-color: rgba(255, 255, 255, 0.089);
+    border-width: 1px;
+    border-style:  solid;
+}
+
+.cards-container{
+    padding: 20px;
+    background-color: rgb(29, 22, 22);
+    transform: translate(0px,85px);
+}
+
+.card-title{
+    height: 70px;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.card-description{
+    height: 400px;
+    font-size: 25px;
+    text-align: justify;
+    overflow: scroll
+}
+
+@media (max-width:970px) {
+    .cards-container{
+        transform: translate(0px,65px);
+    }
+}

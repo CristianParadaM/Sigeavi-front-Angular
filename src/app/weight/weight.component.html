@@ -1,0 +1,137 @@
+<div class="background2">
+    <div class="container-fluid">
+        <div class="subtitle">{{subtitle}}</div>
+        <table class="principal-table">
+            <thead>
+                <th class="col-2">{{lot}}</th>
+                <th class="d-none d-xl-table-cell col-xl-10">{{registerWeight}}</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-12 col-xl-2">
+                        <div class="content">
+                            <div class="search">
+                                <input type="text" class="searchInput" name="search" placeholder="Buscar Lote" (input)="filter(search.value)" #search >
+                                <img src="assets/lupawhiteicon.svg" alt="icon" width="20px" class="icon">
+                            </div>
+                            <div class="row">
+                                <table class="table-lots">
+                                    <thead>
+                                        <th class="header-lots col-6">Lotes</th>
+                                        <th class="header-lots col-6">Galpón</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="row-lots" *ngFor="let lot of lots;index as i" [attr.par]="i%2==0" (click)="select(lot.id, i)" [attr.selected]="selectedLots[i]==1">
+                                            <td class="lot-cell">{{lot.lot}}</td>
+                                            <td class="lot-cell">{{lot.sheed}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="d-none d-xl-table-cell col-xl-10">
+                        <div class="content row">
+                            <div class="col-4">
+                                <div class="content2">
+                                    <p class="weight-quanty">{{quantyBirdsNumber}} gr</p>
+                                    <div class="bascula">
+                                        <img src="assets/aguja.png" alt="aguja" class="aguja" [ngStyle]="{'transform': 'rotate('+(quantyBirdsNumber*360)/3000+'deg)'}">
+                                    </div>
+                                    <div [ngStyle]="{'width':'300px'}">
+                                        <nz-slider [nzMin]="0" [nzMax]="3000" [nzStep]="1" [(ngModel)]="quantyBirdsNumber">
+                                        </nz-slider>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 info">
+                                <p><span class="bold">{{quantyBirds}}{{quantyBirdsLot}} aves</span></p>
+                                <br>
+                                <p class="status">{{recorder}}</p>
+                                <br>
+                                <p><span class="bold">{{quantyBirdsRecomended}}{{quantyBirdsLotRecomended}} aves</span></p>
+                                <br>
+                                <input type="number" class="input-weight" [(ngModel)]="quantyBirdsNumber" min="0" step="1" max="3000"><span> gr</span>
+                                <br>
+                                <p class="status">{{isRegistred ? 'Peso ya registrado':registerStatus}}</p>
+                                <br>
+                                <button class="button-save" (click)="saveChanges()">{{save}}</button>
+                            </div>
+                            <div class="col-4">
+                                <p class="bold table-title">Historial de Peso</p>
+                                <div
+                                    style="overflow: scroll; height: 550px; border-color: black; border-width: 1px; border-style: solid;">
+                                    <table class="history-table">
+                                        <thead>
+                                            <th class="col-4 history">Fecha</th>
+                                            <th class="col-4 history">Peso</th>
+                                            <th class="col-4 history">Lote</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let his of history;index as i" [attr.par]="i%2==0">
+                                                <td>{{his.date}}</td>
+                                                <td>{{his.weight}} gr</td>
+                                                <td>{{his.lot}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="d-grid col-12 d-xl-none col-xl-12">
+                    <th>{{registerWeight}}</th>
+                </tr>
+                <tr class="d-grid block d-xl-none">
+                    <td>
+                        <div class="content row">
+                            <div class="col-12">
+                                <div class="content2">
+                                    <p class="weight-quanty">{{quantyBirdsNumber}} gr</p>
+                                    <div style="display: flex; justify-content: center;">
+                                        <div class="bascula">
+                                            <img src="assets/aguja.png" alt="aguja" class="aguja" [ngStyle]="{'transform': 'rotate('+(quantyBirdsNumber*360)/3000+'deg)'}">
+                                        </div>
+                                    </div>
+                                    <div [ngStyle]="{'width':'300px'}">
+                                        <nz-slider [nzMin]="0" [nzMax]="3000" [nzStep]="1" [(ngModel)]="quantyBirdsNumber">
+                                        </nz-slider>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 info">
+                                <p><span class="bold">{{quantyBirds}}{{quantyBirdsLot}} aves</span></p>
+                                <p class="status">{{recorder}}</p>
+                                <p><span class="bold">{{quantyBirdsRecomended}}{{quantyBirdsLotRecomended}} aves</span></p>
+                                <input type="number" class="input-weight" [(ngModel)]="quantyBirdsNumber" min="0" step="0.1" max="3000"><span> gr</span>
+                                <p class="status">{{registerStatus}}</p>
+                                <button class="button-save" (click)="save()">{{save}}</button>
+                            </div>
+                            <p class="bold table-title">Historial de Peso</p>
+                                <div
+                                    style="overflow: scroll; height: 550px; border-color: black; border-width: 1px; border-style: solid;">
+                                    <table class="history-table">
+                                        <thead>
+                                            <th class="col-4 history">Fecha</th>
+                                            <th class="col-4 history">Peso</th>
+                                            <th class="col-4 history">Lote</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let his of history;index as i" [attr.par]="i%2==0">
+                                                <td>{{his.date}}</td>
+                                                <td>{{his.weight}} gr</td>
+                                                <td>{{his.lot}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p class="footer row">{{footer}}</p>
+    </div>
+</div>

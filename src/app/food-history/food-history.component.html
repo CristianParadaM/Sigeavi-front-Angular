@@ -1,0 +1,162 @@
+<div class="background2">
+    <div class="container-fluid">
+        <div class="subtitle">{{subtitle}}</div>
+        <table class="principal-table">
+            <thead>
+                <th class="col-2">{{lot}}</th>
+                <th class="d-none d-xl-table-cell col-xl-10">{{registerMortality}}</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-12 col-xl-2">
+                        <div class="content">
+                            <div class="search">
+                                <input type="text" class="searchInput" name="search" placeholder="Buscar Lote"
+                                    (input)="filter(search.value)" #search>
+                                <img src="assets/lupawhiteicon.svg" alt="icon" width="20px" class="icon">
+                            </div>
+                            <div class="row">
+                                <table class="table-lots">
+                                    <thead>
+                                        <th class="header-lots col-6">Lotes</th>
+                                        <th class="header-lots col-6">Galpón</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="row-lots" *ngFor="let lot of lots;index as i" [attr.par]="i%2==0"
+                                            (click)="select(lot.id, i)" [attr.selected]="selectedLots[i]==1">
+                                            <td class="lot-cell">{{lot.lot}}</td>
+                                            <td class="lot-cell">{{lot.sheed}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="d-none d-xl-table-cell col-xl-10">
+                        <div class="content row">
+                            <div class="col-3">
+                                <div
+                                    style="display: flex; justify-content: center; align-items: center; margin-top: 80px;">
+                                    <img src="assets/maiz.png" class="mortality-img" alt="water">
+                                </div>
+                                <p class="mortality-quanty">{{killsNumber}} unidades</p>
+                            </div>
+                            <div class="col-1" style="display: flex; justify-content: center; align-items: center;">
+                                <div class="slider">
+                                    <nz-slider nzVertical [nzMin]="1" [nzMax]="25" [(ngModel)]="killsNumber">
+                                    </nz-slider>
+                                </div>
+                            </div>
+                            <form class="col-4 info" [formGroup]="formFood" (submit)="saveChanges()">
+                                <p><span class="bold">{{date}}</span>{{dateValue}}</p>
+                                <input type="number" class="input-water" [defaultValue]="0" min="0" max="25"
+                                    [(ngModel)]="killsNumber" formControlName="quanty"><span></span>
+                                <br>
+                                <br>
+                                <label for="select-1" class="bold">Alimento</label>
+                                <br>
+                                <select name="inv-sel" id="select-1" formControlName="id_food">
+                                    <option [value]="food.id" *ngFor="let food of foodsInventory; index as i">
+                                        {{food.id + ' - '+food.name+' - '+food.mark+ ' - '+food.quanty}} unidades disponibles</option>
+                                </select>
+                                <p [class]="!isRegistred?'status':'statusTrue'">
+                                    {{!isRegistred?registerStatus:registerStatusTrue}}</p>
+                                <br>
+                                <button type="submit" class="button-save" >{{save}}</button>
+                            </form>
+                            <div class="col-4">
+
+                                <p class="bold table-title">Historial de Consumo</p>
+                                <div
+                                    style="overflow: scroll; height: 550px; border-color: black; border-width: 1px; border-style: solid;">
+                                    <table class="history-table">
+                                        <thead>
+                                            <th class="col-2 history">Fecha</th>
+                                            <th class="col-2 history">Consumo</th>
+                                            <th class="col-2 history">Producto</th>
+                                            <th class="col-2 history">Inventario</th>
+                                            <th class="col-2 history">Lote</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let his of history;index as i" [attr.par]="i%2==0">
+                                                <td>{{his.date}}</td>
+                                                <td>{{his.consum}} u</td>
+                                                <td>{{his.product}}</td>
+                                                <td>{{his.inventory}}</td>
+                                                <td>{{his.lot}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="d-grid col-12 d-xl-none col-xl-12">
+                    <th>{{registerMortality}}</th>
+                </tr>
+                <tr class="d-grid block d-xl-none">
+                    <td>
+                        <div class="content row">
+                            <div class="col-11" style="display: flex; justify-content: center; align-items: center;">
+                                <div class="water-content" style="margin-top: 20px;">
+                                    <img src="assets/maiz.png" class="mortality-img" alt="water"
+                                        [ngStyle]="{'height': killsNumber+'%'}">
+                                    <br>
+                                    <div class="mortality-quanty">{{killsNumber}} unidades</div>
+                                </div>
+                            </div>
+                            <div class="col-1" style="display: flex; justify-content: center; align-items: center;">
+                                <div class="slider">
+                                    <nz-slider nzVertical [nzMin]="1" [nzMax]="25" [(ngModel)]="killsNumber">
+                                    </nz-slider>
+                                </div>
+                            </div>
+                            <form class="info" [formGroup]="formFood" (submit)="saveChanges()">
+                                <p><span class="bold">{{date}}</span>{{dateValue}}</p>
+                                <input type="number" class="input-water" [defaultValue]="0" min="0" max="25"
+                                    [(ngModel)]="killsNumber" formControlName="quanty"><span> gr</span>
+                                <br>
+                                <br>
+                                <label for="select-1" class="bold">Alimento</label>
+                                <br>
+                                <select name="inv-sel" formControlName="id_food">
+                                    <option [value]="food.id" *ngFor="let food of foodsInventory; index as i">
+                                        {{food.id + ' - '+food.name+' - '+food.mark+ ' - '+food.quanty}} unidades disponibles</option>
+                                </select>
+                                <p [class]="!isRegistred?'status':'statusTrue'">
+                                    {{!isRegistred?registerStatus:registerStatusTrue}}</p>
+                                <br>
+                                <button type="submit" class="button-save" >{{save}}</button>
+                            </form>
+                            <p class="bold table-title">Historial de Consumo</p>
+                            <div
+                                style="overflow: scroll; height: 550px; border-color: black; border-width: 1px; border-style: solid;">
+                                <table class="history-table">
+                                    <thead>
+                                        <th class="col-2 history">Fecha</th>
+                                        <th class="col-2 history">Consumo</th>
+                                        <th class="col-2 history">Producto</th>
+                                        <th class="col-2 history">Inventario</th>
+                                        <th class="col-2 history">Lote</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let his of history;index as i" [attr.par]="i%2==0">
+                                            <td>{{his.date}}</td>
+                                            <td>{{his.consum}} u</td>
+                                            <td>{{his.product}}</td>
+                                            <td>{{his.inventory}}</td>
+                                            <td>{{his.lot}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p class="footer row">{{footer}}</p>
+    </div>
+</div>

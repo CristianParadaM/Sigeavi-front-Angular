@@ -1,0 +1,234 @@
+.container-fluid {
+    width: 100%;
+    height: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+    background-color: rgb(125, 95, 69);
+}
+
+.subtitle {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.search {
+    position: relative;
+    height: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 40px;
+    background-color: #54A2B4;
+    border-radius: 15px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.searchInput {
+    background-color: transparent;
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    border: none;
+}
+
+::placeholder {
+    color: rgb(241, 241, 241);
+}
+
+.icon {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+th {
+    background-color: #54A2B4;
+    color: white;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+li {
+    list-style: none;
+    background-color: #7FB9C7;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+li[par="false"] {
+    list-style: none;
+    background-color: #4A96A8;
+}
+
+li:hover {
+    background-color: #3b8494;
+    cursor: pointer;
+}
+
+ul {
+    color: white;
+    margin-top: 20px;
+    padding: 0px;
+}
+
+td {
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.content {
+    height: 100%;
+}
+
+.principal-table {
+    margin-top: 20px;
+    background-color: #E7F2F5;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    color: black;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    height: 70vh;
+}
+
+.subtitle2 {
+    -webkit-text-stroke-color: #7FB9C7;
+    -webkit-text-stroke-width: 1px;
+    margin-top: 30px;
+    font-size: 25px;
+}
+
+.pharagraph {
+    text-align: justify;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 19px;
+}
+
+.secundary-table {
+    background-color: #E7F2F5;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    color: black;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.timeline {
+    font-size: 18px;
+}
+
+.controls {
+    font-size: 18px;
+    background-color: #7FB9C7;
+    color: white;
+}
+
+.controls[selected=true] {
+    background-color: #54A2B4;
+}
+
+.row-input {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+.row-input::placeholder {
+    color: rgb(185, 185, 185);
+}
+
+.table-lots {
+    width: 100%;
+    color: white;
+    margin-top: 20px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.lot-cell {
+    border-left-width: 0px;
+    border-right-width: 0px;
+}
+
+.row-lots {
+    list-style: none;
+    background-color: #7FB9C7;
+}
+
+.row-lots[par="false"] {
+    list-style: none;
+    background-color: #4A96A8;
+}
+
+.row-lots[selected=true] {
+    background-color: #1e7386;
+}
+
+.row-lots:hover {
+    background-color: #3e7581;
+    cursor: pointer;
+}
+
+@media (max-width:768px) {
+    .container-fluid {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 30px;
+    }
+
+    td,
+    .pharagraph {
+        font-size: 15px;
+    }
+
+    th {
+        font-size: 18px;
+    }
+
+    .subtitle {
+        text-align: center;
+    }
+
+    .secundary-table {
+        width: 100%;
+    }
+
+    .secundary-table thead {
+        display: none;
+    }
+
+    .secundary-table tr td:first-child {
+        font-weight: bold;
+        font-size: 18px;
+        color: white;
+        background-color: #54A2B4;
+    }
+
+    .secundary-table tbody td {
+        display: block;
+        text-align: center;
+    }
+
+    .secundary-table tbody td:before {
+        content: attr(data-th);
+        display: block;
+        text-align: center;
+    }
+}

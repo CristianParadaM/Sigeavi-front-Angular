@@ -1,0 +1,253 @@
+.container-fluid {
+    width: 100%;
+    height: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: rgb(125, 95, 69);
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+.search {
+    width: 100%;
+    height: 100%;
+    color: black;
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+}
+
+.input-div {
+    position: relative;
+    background-color: #fed4b2;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    height: 40px;
+}
+
+.table {
+    padding: 0px;
+    margin-top: 20px;
+    background-color: #ffcda4;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    height: 74vh;
+    overflow: scroll;
+}
+
+table {
+    width: 100%;
+    color: white;
+}
+
+.line {
+    border-color: black;
+    border-bottom-width: 1px;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-style: solid;
+    width: 430.5%
+}
+
+td {
+    font-size: 20px;
+    text-align: center;
+    border: none;
+    position: relative;
+}
+
+th {
+    font-size: 23px;
+    text-align: center;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 1px;
+    background-color: #fca558;
+    border-color: #FFF7E1;
+    border-style: solid;
+}
+
+th:hover {
+    background-color: #fd9b45;
+    cursor: pointer;
+}
+
+tbody {
+    background-color: transparent;
+}
+
+.button-accordion {
+    background-color: transparent;
+    color: black;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    border: none;
+    height: 60px;
+}
+
+tr {
+    border-color: black;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 0px;
+    border-bottom-width: 1px;
+}
+
+tr[par="false"] {
+    background-color: #fed4b2;
+}
+
+tr[selected="true"] {
+    background-color: #ffbf87;
+    border-bottom-width: 0px;
+}
+
+td[colspan="5"] {
+    background-color: #ffbf87;
+}
+
+.accordion {
+    background-color: transparent;
+}
+
+tr[class="accordion-item"]:hover {
+    background-color: #ffbf87;
+    cursor: pointer;
+}
+
+.input-lot {
+    width: 100%;
+    height: 30.5px;
+    color: black;
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    font-size: 15px;
+    background-color: transparent;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.titleborder {
+    display: block;
+    font-size: 10px;
+    background-color: #ffbf87;
+    padding-left: 10px;
+    padding-right: 10px;
+    transform: translate(10px, -48px);
+    text-align: left;
+    position: absolute;
+    color: black;
+}
+
+select {
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 2px;
+}
+
+.advert {
+    margin-top: 10px;
+    text-align: justify;
+    font-size: 15px;
+    -webkit-text-stroke-color: #f96464;
+    -webkit-text-stroke-width: 1px;
+}
+
+.warning {
+    color: rgb(158, 147, 0);
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: justify;
+    font-size: 15px;
+}
+
+.delete-lot {
+    height: 40px;
+    font-size: 20px;
+    margin-top: 10px;
+    position: relative;
+    background-color: #FF5050;
+    border-radius: 5px;
+    border-color: black;
+    border-style: solid;
+    color: white;
+}
+
+.save-changes {
+    height: 40px;
+    font-size: 20px;
+    margin-top: 10px;
+    position: relative;
+    background-color: #28911d;
+    border-radius: 5px;
+    border-color: black;
+    border-style: solid;
+    color: white;
+}
+
+.delete-lot:hover {
+    border-color: red;
+}
+
+.add-lot {
+    height: 40px;
+    margin-top: 10px;
+    position: relative;
+    background-color: #fb9a69;
+    border-radius: 5px;
+    font-size: 20px;
+    border-color: black;
+    border-style: solid;
+    color: white;
+}
+
+.add-lot:hover {
+    border-color: orange;
+}
+
+.card-body {
+    background-color: #ffbf87;
+    border-color: black;
+    border-style: solid;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+@media (max-width:768px) {
+    .container-fluid {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    td {
+        font-size: 15px;
+    }
+    
+    th {
+        font-size: 18px;
+    }
+
+    .button-accordion {
+        font-size: 15px;
+    }
+}

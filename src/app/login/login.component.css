@@ -1,0 +1,314 @@
+.container{
+    background-color: #FFF7E1;
+    width: 550px;
+    height: 550px;
+    padding: 0px 30px 51px 30px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 70px 0px 70px 0px;
+}
+
+p{
+    color: black;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 20px;
+}
+
+.line{
+    border-color: black;
+    border-bottom-width: 1px;
+    border-top-width:  0px;
+    border-left-width:  0px;
+    border-right-width:  0px;
+    border-style: solid;
+}
+
+.icon{
+    width: 40px;
+    height: 40px;
+    padding-right: 7px;
+    border-color: black;
+    border-left-width: 0px;
+    border-right-width: 1px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-style: solid;
+    transform: translate(0px,-7px);
+}
+
+.label-login{
+    width: 100%;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 40px;
+}
+
+.login-input{
+    width: 88%;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    height: 40px;
+    color: black;
+}
+
+input{
+    color: black;
+}
+
+input[type="submit"]{
+    color: white;
+    background-color: #EF6A2F;
+    padding-left: 40px;
+    padding-right: 40px;
+    height: 38px;
+    margin-top: 1px;
+    margin-bottom: 41px;
+    border-radius: 10px;
+    border-width: 1px;
+    font-size: 15px;
+}
+
+a{
+    color: #A28750 !important;
+    text-decoration: underline !important;
+    display: block;
+    font-size: 15px;
+    text-align: left;
+}
+
+a:hover{
+    cursor: pointer;
+}
+
+span{
+    color: #A28750;
+    font-size: 15px;
+}
+
+.iconAuth{
+    width: 50px;
+    margin-left: 10px;
+}
+
+.iconAuth:hover{
+    cursor: pointer;
+}
+
+.security-text{
+    display: block;
+    color: black;
+    font-size: 18px;
+    -webkit-text-stroke: 1px #EF6A2F;
+    text-align: center;
+}
+
+.text{
+    display: block;
+    color: black;
+    font-size: 18px;
+    text-align: justify;
+}
+
+.textinline{
+    color: black;
+    font-size: 18px;
+    text-align: justify;
+}
+
+.forgot-input{
+    width: 88%;
+    background-color: transparent;
+    font-size: 20px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.back{
+    color: white;
+    background-color: #7F2C0B;
+    border-radius: 5px;
+    font-size: 18px;
+    width: 150px;
+    margin-top: 100px;
+    margin-right: 5px;
+    height: 40px;
+}
+
+.continue{
+    color: white;
+    background-color: #EF6A2F;
+    border-radius: 5px;
+    font-size: 18px;
+    width: 150px;
+    margin-left: 5px;
+    margin-top: 100px;
+    height: 40px;
+}
+
+.resend{
+    color: white;
+    background-color: #FFC000;
+    border-radius: 5px;
+    font-size: 18px;
+    width: 150px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 100px;
+    height: 40px;
+}
+
+.save{
+    color: white;
+    background-color: #EF6A2F;
+    border-radius: 5px;
+    font-size: 18px;
+    width: 150px;
+    margin-top: 100px;
+    height: 40px;
+}
+
+.forgot-input-100{
+    width: 100%;
+    background-color: transparent;
+    font-size: 20px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+@media (max-height:675px) {
+    .container{
+        width: 450px;
+        height: 450px;
+        padding: 0px 30px 0px 30px;
+    }
+
+    .label-login{
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-height:565px) {
+    .container{
+        width: 350px;
+        height: 350px;
+        padding: 0px 10px 0px 10px;
+    }
+
+    p{
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .label-login{
+        margin-bottom: 10px;
+        height: 30px;
+    }
+
+    .icon{
+        width: 30px;
+        height: 30px;
+        transform: translate(0px,-5px);
+    }
+
+    .login-input{
+        width: 88%;
+        background-color: transparent;
+        border: none;
+        font-size: 15px;
+        height: 30px;
+        color: black;
+    }
+
+    input[type="submit"]{
+        padding-left: 40px;
+        padding-right: 40px;
+        height: 33px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-height:500px) {
+    .container{
+        width: 450px;
+        height: 450px;
+        padding: 0px 30px 0px 30px;
+    }
+
+    .label-login{
+        margin-bottom: 20px;
+    }
+}
+
+
+@media (max-width:500px) {
+    .container{
+        width: 350px;
+        height: 350px;
+        padding: 0px 10px 0px 10px;
+    }
+
+    p{
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .label-login{
+        margin-bottom: 10px;
+        height: 30px;
+    }
+
+    .iconAuth{
+        width: 30px;
+        margin-left: 5px;
+    }
+
+    .icon{
+        width: 30px;
+        height: 30px;
+        transform: translate(0px,-5px);
+    }
+
+    .login-input{
+        width: 88%;
+        background-color: transparent;
+        border: none;
+        font-size: 15px;
+        height: 30px;
+        color: black;
+    }
+
+    input[type="submit"]{
+        padding-left: 40px;
+        padding-right: 40px;
+        height: 33px;
+        margin-bottom: 10px;
+    }
+
+    .back{
+        font-size: 15px;
+        margin-top: 10px;
+        height: 30px;
+    }
+
+    .continue{
+        font-size: 15px;
+        margin-top: 10px;
+        height: 30px;
+    }
+
+    .resend{
+        font-size: 15px;
+        margin-top: 10px;
+        height: 30px;
+    }
+
+    .security-text, .text, .forgot-input{
+        font-size: 15px;
+    }
+
+}

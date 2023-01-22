@@ -1,0 +1,304 @@
+<div>
+    <nav class="container-fluid">
+        <div class="d-block d-lg-none">
+            <label for="check" class="label-check"><i class="fa-solid fa-bars icon-bars"></i></label>
+        </div>
+        <p class="d-none d-lg-block title center">{{title}}</p>
+        <p class="d-block d-lg-none title center" data-aos="fade-down" data-aos-duration="1500">
+            {{titleSecundary}}
+        </p>
+        <div (click)="changeLogoutVisibility()">
+            <i class="fa-solid fa-user icon-header"></i>
+        </div>
+    </nav>
+    <div class="curtain" *ngIf="isExpanded"></div>
+    <div class="logout-panel" *ngIf="logoutVisible">
+        <p class="subtitle">Rol: {{rol}}</p>
+        <button type="button" id="logout-button" data-bs-toggle="modal" data-bs-target="#logoutModal">Cerrar
+            Sesión</button>
+    </div>
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel"
+                        [ngStyle]="{'color':'black', 'font-weight':'bolder'}">
+                        Cerrar Sesión</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text" [ngStyle]="{'color':'black'}">
+                        ¿Estás seguro que deseas cerrar sesión?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancelar</button>
+                    <button type="button" class="btn btn-primary"
+                        [ngStyle]="{'background-color':'#EF6A2F', 'border':'none'}" data-bs-dismiss="modal"
+                        (click)="logOut()">cerrar sesión</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu -->
+
+    <input type="checkbox" name="check" id="check" #check (change)="print(check)">
+
+    <div class="lateral" (mouseenter)="!check.checked ? expand(true) : undefined" (mouseleave)="!check.checked ? expand(false) : undefined" style="overflow: scroll;">
+        <br>
+        <div class="row center">
+            <img src="assets/logo.png" alt="logo" class="logo" style="cursor: pointer;"
+                (click)="select(-1, -1, 'SISTEMA DE GESTIÓN Y TRAZABILIDAD DE GRANJAS AVICOLAS - SIGEAVI')">
+            <label for="check" class="label-check"><i class="fa-solid fa-arrow-left icon-bars"></i></label>
+        </div>
+        <div class="line"></div>
+        <br>
+        <p class="center subtitle" *ngIf="isExpanded || check.checked">{{welcomeAgain}}</p>
+        <p class="center subtitle2" *ngIf="isExpanded || check.checked">{{nameUser}}</p>
+        <br>
+        <div class="accordion" id="accordionParent" (mouseenter)="expand(true)">
+            <div class="center" *ngIf="(isExpanded || check.checked) && getPermission(0); else BlockElse1">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                            <div class="col-7">
+                                <p class="option">{{optionMiFarms}}</p>
+                            </div>
+                            <div class="col-3">
+                                <img src="assets/farmicon.svg" alt="logo" class="icon">
+                            </div>
+                        </button>
+                    </h2>
+                    <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="heading1"
+                        data-bs-parent="#accordionParent">
+                        <div class="accordion-body">
+                            <button *ngFor="let farm of userService.farms" class="accordion-option row"
+                                (click)="selectFarm(farm.id, farm.name)" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                                <span class="col-9">{{farm.name}}</span>
+                                <img class="col-1" src="assets/farmicon.svg" alt="" class="subicon">
+                            </button>
+                            <button *ngIf="getPermission(0.1)" class="accordion-option row"
+                                (click)="select(1, 0.1, addFarm)" (click)="check.checked = false" type="button">
+                                <span class="col-9">{{addFarm}}</span>
+                                <img class="col-1" src="assets/addicon.svg" alt="" class="subicon">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-template #BlockElse1>
+                <img src="assets/farmicon.svg" [title]="optionActive==1?1:-1" alt="" class="icon" data-aos="flip-left"
+                    data-aos-duration="1000">
+            </ng-template>
+            <div class="center" *ngIf="(isExpanded || check.checked) && getPermission(1); else BlockElse2">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                            <div class="col-7">
+                                <p class="option">{{optionChiken}}</p>
+                            </div>
+                            <div class="col-3">
+                                <img src="assets/chickenicon.svg" alt="logo" class="icon">
+                            </div>
+                        </button>
+                    </h2>
+                    <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2"
+                        data-bs-parent="#accordionParent">
+                        <div class="accordion-body">
+                            <button *ngIf="getPermission(1.1)" class="accordion-option row"
+                                (click)="select(2, 1.1, managementLot)" (click)="check.checked = false" type="button">
+                                <span class="col-9">{{managementLot}}</span>
+                                <img class="col-1" src="assets/managementicon.svg" alt="" class="subicon">
+                            </button>
+                            <button *ngIf="getPermission(1.2)" class="accordion-option row"
+                                (click)="select(2, 1.2, vaccinationPlan)" (click)="check.checked = false" type="button">
+                                <span class="col-9">{{vaccinationPlan}}</span>
+                                <img class="col-1" src="assets/vaccinationicon.svg" alt="" class="subicon">
+                            </button>
+                            <button *ngIf="getPermission(1.3)" class="accordion-option row"
+                                (click)="select(2, 1.3, mortality)" (click)="check.checked = false" type="button">
+                                <span class="col-9">{{mortality}}</span>
+                                <img class="col-1" src="assets/mortalityicon.svg" alt="" class="subicon">
+                            </button>
+                            <button *ngIf="getPermission(1.4)" class="accordion-option row"
+                                (click)="select(2, 1.4, weightControl)" (click)="check.checked = false" type="button">
+                                <span class="col-9">{{weightControl}}</span>
+                                <img class="col-1" src="assets/weighticon.svg" alt="" class="subicon">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-template #BlockElse2>
+                <img src="assets/chickenicon.svg" [title]="optionActive==2?1:-1" alt="logo" class="icon"
+                    data-aos="flip-left" data-aos-duration="1000" *ngIf="getPermission(1)">
+            </ng-template>
+            <div class="center" *ngIf="(isExpanded || check.checked) && getPermission(2); else BlockElse3">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                            <div class="col-7">
+                                <p class="option">{{optionSheds}}</p>
+                            </div>
+                            <div class="col-3">
+                                <img src="assets/sheedicon.svg" alt="logo" class="icon">
+                            </div>
+                        </button>
+                    </h2>
+                    <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3"
+                        data-bs-parent="#accordionParent">
+                        <div class="accordion-body">
+                            <button *ngIf="getPermission(2.1)" class="accordion-option row"
+                                (click)="select(3, 2.1, managementSheep)" (click)="check.checked = false" type="button">
+                                <span class="col-9">{{managementSheep}}</span>
+                                <img class="col-1" src="assets/managementicon.svg" alt="" class="subicon">
+                            </button>
+                            <button *ngIf="getPermission(2.2)" class="accordion-option row"
+                                (click)="select(3, 2.2, spaceSheep)" (click)="check.checked = false" type="button">
+                                <span class="col-9">{{spaceSheep}}</span>
+                                <img class="col-1" src="assets/spaceicon.png" alt="" class="subicon"
+                                    [ngStyle]="{'height':'30px', 'transform':'translate(0px,40%)'}">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-template #BlockElse3>
+                <img src="assets/sheedicon.svg" [title]="optionActive==3?1:-1" alt="logo" class="icon"
+                    data-aos="flip-left" data-aos-duration="1000" *ngIf="getPermission(2)">
+            </ng-template>
+            <div class="center" *ngIf="(isExpanded || check.checked) && getPermission(3); else BlockElse4">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading4">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                            <div class="col-7">
+                                <p class="option">{{optionFood}}</p>
+                            </div>
+                            <div class="col-3">
+                                <img src="assets/foodicon.svg" alt="logo" class="icon">
+                            </div>
+                        </button>
+                    </h2>
+                    <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4"
+                        data-bs-parent="#accordionParent">
+                        <div class="accordion-body">
+                            <button *ngIf="getPermission(3.1)" class="accordion-option row"
+                                (click)="select(4, 3.1, inventory)" (click)="check.checked = false" type="button">
+                                <span class="col-9">{{inventory}}</span>
+                                <img class="col-1" src="assets/inventoryicon.svg" alt="" class="subicon">
+                            </button>
+                            <button *ngIf="getPermission(3.2)" class="accordion-option row"
+                                (click)="select(4, 3.2, waterConsumed)" (click)="check.checked = false" type="button">
+                                <span class="col-9">{{waterConsumed}}</span>
+                                <img class="col-1" src="assets/watericon.svg" alt="" class="subicon">
+                            </button>
+                            <button *ngIf="getPermission(3.3)" class="accordion-option row"
+                                (click)="select(4, 3.3, foodhistory)" (click)="check.checked = false" type="button">
+                                <span class="col-9">{{foodhistory}}</span>
+                                <img class="col-1" src="assets/foodhistory.svg" alt="" class="subicon">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-template #BlockElse4>
+                <img src="assets/foodicon.svg" [title]="optionActive==4?1:-1" alt="logo" class="icon"
+                    data-aos="flip-left" data-aos-duration="1000" *ngIf="getPermission(3)">
+            </ng-template>
+            <div class="center" *ngIf="(isExpanded || check.checked) && getPermission(4); else BlockElse5" id="accordion5">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading5">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                            <div class="col-7">
+                                <p class="option">{{optionReports}}</p>
+                            </div>
+                            <div class="col-3">
+                                <img src="assets/reporticon.svg" alt="logo" class="icon">
+                            </div>
+                        </button>
+                    </h2>
+                    <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5"
+                        data-bs-parent="#accordionParent">
+                        <div class="accordion-body">
+                            <button *ngIf="getPermission(4.1)" class="accordion-option row"
+                                (click)="select(5, 4.1, foodReport)" (click)="check.checked = false" type="button">
+                                <span class="col-9">{{foodReport}}</span>
+                                <img class="col-1" src="assets/report1icon.svg" alt="" class="subicon">
+                            </button>
+                            <button *ngIf="getPermission(4.2)" class="accordion-option row"
+                                (click)="select(5, 4.2, mortalityReport)" (click)="check.checked = false" type="button">
+                                <span class="col-9">{{mortalityReport}}</span>
+                                <img class="col-1" src="assets/report4icon.svg" alt="" class="subicon">
+                            </button>
+                            <button *ngIf="getPermission(4.3)" class="accordion-option row"
+                                (click)="select(5, 4.3, vaccinationReport)" (click)="check.checked = false" type="button">
+                                <span class="col-9">{{vaccinationReport}}</span>
+                                <img class="col-1" src="assets/report2icon.svg" alt="" class="subicon">
+                            </button>
+                            <button *ngIf="getPermission(4.4)" class="accordion-option row"
+                                (click)="select(5, 4.4, costsReport)" (click)="check.checked = false" type="button">
+                                <span class="col-9">{{costsReport}}</span>
+                                <img class="col-1" src="assets/report3icon.svg" alt="" class="subicon">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-template #BlockElse5>
+                <img src="assets/reporticon.svg" [title]="optionActive==5?1:-1" alt="logo" class="icon"
+                    data-aos="flip-left" data-aos-duration="1000" *ngIf="getPermission(4)">
+            </ng-template>
+            <div class="center" *ngIf="(isExpanded || check.checked) && getPermission(5); else BlockElse6">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading6">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                            <div class="col-7">
+                                <p class="option">{{optionUsers}}</p>
+                            </div>
+                            <div class="col-3">
+                                <img src="assets/farmersicon.svg" alt="logo" class="icon">
+                            </div>
+                        </button>
+                    </h2>
+                    <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6"
+                        data-bs-parent="#accordionParent">
+                        <div class="accordion-body">
+                            <button *ngIf="getPermission(5.1)" class="accordion-option row"
+                                (click)="select(6, 5.1, magnamentUsers)" (click)="check.checked = false" type="button">
+                                <span class="col-9">{{magnamentUsers}}</span>
+                                <img class="col-1" src="assets/managementusersicon.svg" alt="" class="subicon">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-template #BlockElse6>
+                <img src="assets/farmersicon.svg" [title]="optionActive==6?1:-1" alt="logo" class="icon"
+                    data-aos="flip-left" data-aos-duration="1000" *ngIf="getPermission(5)">
+            </ng-template>
+            <div class="center" *ngIf="(isExpanded || check.checked); else BlockElse7" style="margin-bottom: 20px;">
+                <div class="row btn-option" (click)="select(7, 6, 'Configuraciones')" (click)="check.checked = false">
+                    <div class="col-7">
+                        <p class="option">{{optionSettings}}</p>
+                    </div>
+                    <div class="col-3">
+                        <img src="assets/settingsicon.svg" alt="logo" class="icon">
+                    </div>
+                </div>
+            </div>
+            <ng-template #BlockElse7>
+                <img src="assets/settingsicon.svg" [title]="optionActive==7?1:-1" alt="logo" class="icon"
+                    data-aos="flip-left" data-aos-duration="1000">
+            </ng-template>
+
+        </div>
+    </div>
+</div>

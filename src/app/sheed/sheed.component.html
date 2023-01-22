@@ -1,0 +1,148 @@
+<div class="background2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="input-div col-12 col-xl-6" [ngStyle]="{'margin-top':'30px'}">
+                <textarea class="search" id="1" type="text" [placeholder]="placeholderSearch" (input)="filtre(search.value)"
+                    #search></textarea>
+                <img src="assets/lupaicon.svg" alt="icon" class="icon ">
+            </div>
+        </div>
+        <div class="row">
+            <div class="table">
+                <table class="accordion" id="sheedParent">
+                    <thead>
+                        <tr>
+                            <th (click)="order(0)">{{nSheed}}</th>
+                            <th (click)="order(1)">{{quanty}}</th>
+                            <th (click)="order(2)">{{width}}</th>
+                            <th (click)="order(3)">{{height}}</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let sheed of sheeds; index as i">
+                        <tr class="accordion-item" [attr.selected]="isSelected(i)" [attr.par]="i%2==0" (click)="selectOption(i)">
+                            <td><button class="button-accordion" type="button" data-bs-toggle="collapse"
+                                    [attr.data-bs-target]="'#collapse'+i" aria-expanded="false"
+                                    [attr.aria-controls]="'collapse'+i">{{sheed.sheed}}</button></td>
+                            <td><button class="button-accordion" type="button" data-bs-toggle="collapse"
+                                    [attr.data-bs-target]="'#collapse'+i" aria-expanded="false"
+                                    [attr.aria-controls]="'collapse'+i">{{sheed.quanty}}</button></td>
+                            <td><button class="button-accordion" type="button" data-bs-toggle="collapse"
+                                    [attr.data-bs-target]="'#collapse'+i" aria-expanded="false"
+                                    [attr.aria-controls]="'collapse'+i">{{sheed.width}} metros</button></td>
+                            <td><button class="button-accordion" type="button" data-bs-toggle="collapse"
+                                    [attr.data-bs-target]="'#collapse'+i" aria-expanded="false"
+                                    [attr.aria-controls]="'collapse'+i">{{sheed.height}} metros</button></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" [id]="'collapse'+i" class="accordion-collapse collapse"
+                                data-bs-parent="#sheedParent">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-12 col-xl">
+                                            <input id="2" class="input-lot" type="text" placeholder="Galpon" disabled
+                                                [value]="sheed.sheed" >
+                                            <label for="2" class="titleborder">Galpón</label>
+                                        </div>
+                                        <div class="col-12 col-xl">
+                                            <input id="4" class="input-lot" type="number" placeholder="Ancho" [value]="sheed.width" #w>
+                                            <label for="4" class="titleborder">Ancho</label>
+                                        </div>
+                                        <div class="col-12 col-xl">
+                                            <input id="6" class="input-lot" type="number" placeholder="Alto"
+                                                [value]="sheed.height" #h>
+                                            <label for="6" class="titleborder">Alto</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <p class="advert" *ngIf="isQuantyMax(sheed.width, sheed.height, sheed.quanty) == 3">
+                                            Exceder la cantidad recomendada de Aves según el espacio que puede contener un galpón puede afectar la calidad de vida de las Aves.
+                                        </p>
+                                        <p class="warning" *ngIf="isQuantyMax(sheed.width, sheed.height, sheed.quanty) == 2">
+                                            Quedan menos de 50 espacios de aves disponibles recomendados según el espacio
+                                            que puede contener un galpón. Recuerda que exceder la cantidad recomendada de
+                                            Aves según el espacio que puede contener un galpón puede afectar la calidad de
+                                            vida de las Aves.
+                                        </p>
+                                        <p class="warning" *ngIf="isQuantyMax(sheed.width, sheed.height, sheed.quanty) == 1">
+                                            Quedan menos de 10 espacios de aves disponibles recomendados según el espacio
+                                            que puede contener un galpón. Recuerda que exceder la cantidad recomendada de
+                                            Aves según el espacio que puede contener un galpón puede afectar la calidad de
+                                            vida de las Aves.
+                                        </p>
+                                    </div>
+                                    <div class="row">
+                                        <button class="save-changes col-12 col-md-6 col-xl-3" [ngStyle]="{'margin-right':'10px'}" (click)="update(sheed.id, sheed.sheed, w.value, h.value)">
+                                            <p>Guardar Cambios</p>
+                                            <img src="assets/chuloicon.svg" alt="icon" class="icon" >
+                                        </button>
+                                        <button class="delete-lot col-12 col-md-6 col-xl-3" (click)="predelete(sheed.id)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <p>Eliminar Galpón</p>
+                                            <img src="assets/deleteicon.svg" alt="icon" class="icon" >
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <button class="add-lot col-12 col-md-6 col-xl-2" data-bs-toggle="collapse"
+                data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                <p>Añadir Galpón</p>
+                <img src="assets/addicon.svg" alt="icon" class="icon">
+            </button>
+            <div class="collapse collapse-vertical row" id="collapseWidthExample">
+                <form class="card card-body col-12 col-md-9 col-xl-6" [formGroup]="formAddSheed" (submit)="addSheed()">
+                    <div class="row">
+                        <div class="col-12 col-xl">
+                            <input id="7" class="input-lot" type="text" placeholder="Galpon" formControlName="sheed">
+                            <label for="7" class="titleborder">Galpon</label>
+                        </div>
+                        <div class="col-12 col-xl">
+                            <input id="11" class="input-lot" type="number" placeholder="ancho"  formControlName="width"
+                            [ngStyle]="inputQuanty > 300 ?{'border-color': 'red'}:inputQuanty > 200 && inputQuanty < 299 ?{'border-color': 'yellow'}:{'border-color': 'black'}" required>
+                            <label for="11" class="titleborder">Ancho</label>
+                        </div>
+                        <div class="col-12 col-xl">
+                            <input id="12" class="input-lot" type="number" placeholder="alto"  formControlName="height"
+                            [ngStyle]="inputQuanty > 300 ?{'border-color': 'red'}:inputQuanty > 200 && inputQuanty < 299 ?{'border-color': 'yellow'}:{'border-color': 'black'}" required>
+                            <label for="12" class="titleborder">Alto</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button type="submit" class="add-lot col-12 col-md-6 col-xl-2" style="margin-right: 10px;" [disabled]="formAddSheed.invalid" data-bs-toggle="collapse"
+                        data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                            <p>Añadir</p>
+                            <img src="assets/addicon.svg" alt="icon" class="icon">
+                        </button>
+                        <button type="button" class="delete-lot col-12 col-md-6 col-xl-2" data-bs-toggle="collapse"
+                        data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                            <p>Cancelar</p>
+                            <img src="assets/deleteicon.svg" alt="icon" class="icon">
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" [ngStyle]="{'color':'black'}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Alerta</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" [ngStyle]="{'font-size':'15px'}">
+          ¿Está seguro que desea eliminar este lote?
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="delete-lot" data-bs-dismiss="modal" (click)="delete()">Borrar</button>
+          <button type="button" class="add-lot" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>

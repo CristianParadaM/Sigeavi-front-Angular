@@ -1,0 +1,102 @@
+.container-fluid {
+    width: 100%;
+    height: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+    background-color: rgb(125, 95, 69);
+    font-size: 20px;
+}
+
+span{
+    width: 100%;
+}
+
+
+.title {
+    margin-bottom: 50px;
+}
+
+.input-date{
+    width: 100%;
+    height: 40px;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+.calculate{
+    background-color: #ff8800;
+    color: white;
+    font-size: 15px;
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+}
+
+.titleborderHover {
+    display: block;
+    font-size: 10px;
+    background-color: #FFF7E1;
+    padding-left: 5px;
+    padding-right: 5px;
+    transform: translate(10px, -58px);
+    text-align: left;
+    position: absolute;
+    color: rgb(0, 0, 0);
+}
+
+
+.subtitle{
+    font-weight: bold;
+    color: #ffbb00;
+    font-size: 20px;
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 0.5px;
+}
+
+.footer{
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: linear-gradient(to right, #fff3d1, #f3e0aa);
+    border-color: black;
+    border-width: 1px;
+    border-radius: 10px;
+    border-style: solid;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.table{
+    background-color: #FFF7E1;
+    border-radius: 10px;
+    padding: 20px;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+}
+
+ngx-charts-bar-vertical{
+    font-size: 20px;
+    font-family: sans-serif;
+    justify-content: center;
+    display: contents;
+}
+
+ngx-charts-pie-grid{
+    display: contents;
+}
+
+@media (max-width:768px) {
+    .container-fluid {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+    }
+    
+    .table,
+    ngx-charts-bar-vertical{
+        font-size: 15px;
+    }
+}

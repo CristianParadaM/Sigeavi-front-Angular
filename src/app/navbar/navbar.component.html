@@ -1,0 +1,24 @@
+<header class="container-fluid">
+    <img src="assets/logo.png" alt="logo" id="logo">
+    <span class="d-inline title">{{titleApp}}</span>
+    <input type="checkbox" name="check" id="check" #checkbox>
+    <label for="check" class="menu"><i class="fa-solid fa-bars"></i></label>
+    <ul>
+        <li (click)="changeIndex(2)" (click)="checkbox.checked = false" id="regisbtn">
+            <button class="text button-header2">{{bntRegistryText}}</button>
+        </li>
+        <li (click)="changeIndex(1)" (click)="checkbox.checked = false" id="loginbtn">
+            <button class="text button-header1">{{btnLoginText}}</button>
+        </li>
+        <li (click)="checkbox.checked = false" *ngIf="index == 0" class="text" (click)="moveScroll(getHeightScreen())">
+            <a>{{btnContact}}</a>
+        </li>
+        <li (click)="checkbox.checked = false" *ngIf="index == 0" class="text"
+            (click)="moveScroll(getHeightScreen()/2)">
+            <a>{{btnAboutUs}}</a>
+        </li>
+        <li (click)="checkbox.checked = false" class="text" (click)="index == 0? moveScroll(0) : changeIndex(0)">
+            <a>{{btnHome}}</a>
+        </li>
+    </ul>
+</header>
