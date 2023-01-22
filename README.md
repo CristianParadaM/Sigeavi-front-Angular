@@ -34,11 +34,15 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 [![login.png](https://i.postimg.cc/NfmXCkQ5/login.png)](https://postimg.cc/Yh2jhgGH)
 
-[![register.png](https://i.postimg.cc/qB9nG5VP/register.png)](https://postimg.cc/grHnz40s)
+[![space.png](https://i.postimg.cc/Pqhrq4Ms/space.png)](https://postimg.cc/Js6W6jgP)
 
-[![pass-Recovery.png](https://i.postimg.cc/htndkQGM/pass-Recovery.png)](https://postimg.cc/QH6C5t1W)
+[![vaccination.png](https://i.postimg.cc/7LVPJ2BC/vaccination.png)](https://postimg.cc/PLCnBPnh)
+
+[![reports.png](https://i.postimg.cc/7YFZFDGL/reports.png)](https://postimg.cc/qzGrKPGf)
 
 [![home.png](https://i.postimg.cc/XXSVy5PP/home.png)](https://postimg.cc/jncVpDt6)
+
+
 
 # Developed by:
 
