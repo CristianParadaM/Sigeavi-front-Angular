@@ -42,6 +42,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 Developed by:
 
-Cristian David Parada Martinez - Front End Designer and Developer
-Nicolas David Fajardo Acuña - Back End Developer
+Cristian David Parada Martinez - Front End Designer and Developer \n
+Nicolas David Fajardo Acuña - Back End Developer \n
 Daniel Felipe Suarez Bohorquez - Back End Developer
