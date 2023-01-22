@@ -39,3 +39,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 [![pass-Recovery.png](https://i.postimg.cc/htndkQGM/pass-Recovery.png)](https://postimg.cc/QH6C5t1W)
 
 [![home.png](https://i.postimg.cc/XXSVy5PP/home.png)](https://postimg.cc/jncVpDt6)
+
+Developed by:
+
+Cristian David Parada Martinez - Front End Designer and Developer
+Nicolas David Fajardo Acuña - Back End Developer
+Daniel Felipe Suarez Bohorquez - Back End Developer
